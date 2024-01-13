@@ -1,7 +1,11 @@
 const express = require("express");
 const signUp = require("../controllers/signUpAdmin");
 const logIn = require("../controllers/logInAdmin");
+const checkStudentStatus = require("../controllers/checkStudentStatus");
+const inOutPopulate = require("../controllers/inOutPopulate");
 const router = express.Router();
 router.route("/adminSignup").post(signUp);
 router.route("/adminLogin").post(logIn);
+router.route("/checkStudentStatus").post(checkStudentStatus);
+router.route("/inOutPopulate").post(inOutPopulate);
 module.exports = router;

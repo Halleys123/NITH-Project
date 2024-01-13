@@ -14,7 +14,7 @@ const logIn = asyncErrorHandler(async (req, res, next) => {
     throw new CustomError("usernameOrPasswordDidNotMatch", 403);
   }
   const jwt = await createJwt(
-    { _id: user._id, role: user.role },
+    { _id: user._id, role: user.role, gateNo: user.gateNo },
     process.env.ADMIN_JWT_SECRET
   );
   let passwordCheck = await checkPasswords(password, user.password);

@@ -9,6 +9,11 @@ const adminSchema = new mongoose.Schema({
     required: true,
     enum: ["admin", "gateMan"],
   },
+  gateNo: {
+    type: Number,
+    default: null,
+    enum: [1, 2, null],
+  },
 });
 
 const collection = mongoose.model("admins", adminSchema);
