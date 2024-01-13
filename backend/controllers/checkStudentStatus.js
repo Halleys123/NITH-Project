@@ -1,17 +1,10 @@
-const adminSchema = require("../models/adminSchema");
 const CustomError = require("../utils/errors/CustomError");
-const decodeJwt = require("../utils/security/jwt/decodeJwt");
 const asyncErrorHandler = require("../utils/errors/asyncErrorHandler");
 const Response = require("../utils/response/responseClass");
 const studentSchema = require("../models/studentSchema");
 const checkStudentStatus = asyncErrorHandler(async (req, res, next) => {
   const { rollNo } = req.body;
-  let jwtToken = req.headers.authentication;
-  const payload = await decodeJwt(jwtToken, process.env.ADMIN_JWT_SECRET);
-  let gateMan = await adminSchema.findOne({ _id: payload._id });
-  if (!gateMan) {
-    throw new CustomError("logInAgainYourTokenHasBeenExpired", 403);
-  }
+  let gateMan = req.adminData;
   if (gateMan.role != "gateMan") {
     throw new CustomError("youAreNotTheGateMan", 403);
   }
@@ -26,6 +19,7 @@ const checkStudentStatus = asyncErrorHandler(async (req, res, next) => {
       200,
       null
     );
+    return res.status(response.statusCode).json(response);
   } else {
     response = new Response(
       true,
@@ -40,7 +34,7 @@ const checkStudentStatus = asyncErrorHandler(async (req, res, next) => {
       200,
       null
     );
+    return res.status(response.statusCode).json(response);
   }
-  return res.json(response);
 });
 module.exports = checkStudentStatus;

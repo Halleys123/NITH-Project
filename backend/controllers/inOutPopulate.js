@@ -1,6 +1,4 @@
-const adminSchema = require("../models/adminSchema");
 const CustomError = require("../utils/errors/CustomError");
-const decodeJwt = require("../utils/security/jwt/decodeJwt");
 const asyncErrorHandler = require("../utils/errors/asyncErrorHandler");
 const Response = require("../utils/response/responseClass");
 const studentSchema = require("../models/studentSchema");
@@ -11,25 +9,21 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
   if (!rollNo) {
     throw new CustomError("enterAValidRollNo");
   }
-  let jwtToken = req.headers.authentication;
-  const payload = await decodeJwt(jwtToken, process.env.ADMIN_JWT_SECRET);
-  let gateMan = await adminSchema.findOne({ _id: payload._id });
-  if (!gateMan) {
-    throw new CustomError("logInAgainYourTokenHasBeenExpired", 403);
-  }
+  let gateMan = req.adminData;
   if (gateMan.role != "gateMan") {
     throw new CustomError("youAreNotTheGateMan", 403);
   }
   let student;
   let daysData;
+  let dateNow = Date.now() + offsetMilliSeconds;
   if (status == true) {
     student = await studentSchema.findOneAndUpdate(
       { rollNo: rollNo },
       {
         isOut: false,
         $set: {
-          "history.$[elem].entryDate": Date.now() + offsetMilliSeconds,
-          "history.$[elem].entryGate": payload.gateNo,
+          "history.$[elem].entryDate": dateNow,
+          "history.$[elem].entryGate": gateMan.gateNo,
         },
       },
       {
@@ -50,8 +44,8 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
       },
       {
         $set: {
-          "data.$[elem].entryGate": payload.gateNo,
-          "data.$[elem].entryDate": Date.now() + offsetMilliSeconds,
+          "data.$[elem].entryGate": gateMan.gateNo,
+          "data.$[elem].entryDate": dateNow,
         },
       },
       {
@@ -71,8 +65,8 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
         $set: { isOut: true },
         $push: {
           history: {
-            exitDate: Date.now() + offsetMilliSeconds,
-            exitGate: payload.gateNo,
+            exitDate: dateNow,
+            exitGate: gateMan.gateNo,
             entryGate: null,
             entryDate: null,
             reason: reason,
@@ -86,8 +80,8 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
         isOut: true,
         history: [
           {
-            exitDate: Date.now() + offsetMilliSeconds,
-            exitGate: payload.gateNo,
+            exitDate: dateNow,
+            exitGate: gateMan.gateNo,
             entryGate: null,
             entryDate: null,
             reason: reason,
@@ -102,8 +96,8 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
           data: {
             rollNo: rollNo,
             searchId: student._id,
-            exitGate: payload.gateNo,
-            exitDate: Date.now() + offsetMilliSeconds,
+            exitGate: gateMan.gateNo,
+            exitDate: dateNow,
             entryDate: null,
             entryGate: null,
             reason: reason,
@@ -120,8 +114,8 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
           {
             rollNo: rollNo,
             searchId: student._id,
-            exitGate: payload.gateNo,
-            exitDate: Date.now() + offsetMilliSeconds,
+            exitGate: gateMan.gateNo,
+            exitDate: dateNow,
             entryDate: null,
             entryGate: null,
             reason: reason,
@@ -143,6 +137,6 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
     200,
     null
   );
-  res.json(response);
+  return res.status(response.statusCode).json(response);
 });
 module.exports = inOutPopulate;
