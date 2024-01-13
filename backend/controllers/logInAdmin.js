@@ -20,7 +20,7 @@ const logIn = asyncErrorHandler(async (req, res, next) => {
   let passwordCheck = await checkPasswords(password, user.password);
   if (passwordCheck) {
     const response = new Response(true, null, { user, jwt }, "success", 200);
-    return res.json(response);
+    return res.status(response.statusCode).json(response);
   } else {
     throw new CustomError("usernameOrPasswordDidNotMatch", 403);
   }
