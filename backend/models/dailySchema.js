@@ -1,15 +1,19 @@
 const mongoose = require("mongoose");
 const dailySchema = new mongoose.Schema({
-  date: { type: Date, required: true },
+  date: {
+    type: String,
+    required: true,
+    default: new Date().toLocaleDateString(),
+  },
   data: [
     {
-      rollNo: { type: Number },
+      rollNo: { type: String },
       searchId: { type: mongoose.Schema.ObjectId, ref: "students" },
       exitDate: { type: Date },
       entryDate: { type: Date },
       exitGate: { type: Number },
       entryGate: { type: Number },
-      reason: { type: Number, enum: [0, 1] },
+      reason: { type: String, enum: ["market", "home"] },
     },
   ],
 });

@@ -16,10 +16,10 @@ const studentSchema = new mongoose.Schema({
       entryDate: { type: Date },
       exitGate: { type: Number },
       entryGate: { type: Number },
-      reason: { type: Number, enum: [0, 1] },
+      reason: { type: String, enum: ["market", "home"], default: "market" },
     },
   ],
 });
 const collection = mongoose.model("students", studentSchema);
-collection.reasonArray = ["market", "home"];
+
 module.exports = collection;
