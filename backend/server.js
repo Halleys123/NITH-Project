@@ -9,7 +9,7 @@ mongoose
     console.log("connected");
   })
   .catch((err) => {
-    console.error("Unable to connect to the database");
+    console.error(err);
   });
 app.listen(process.env.PORT, () => {
   console.log("server started");

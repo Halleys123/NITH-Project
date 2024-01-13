@@ -37,6 +37,6 @@ const signUp = asyncErrorHandler(async (req, res, next) => {
     process.env.ADMIN_JWT_SECRET
   );
   const response = new Response(true, null, { user, jwt }, "success", 201);
-  return res.json(response);
+  return res.status(response.statusCode).json(response);
 });
 module.exports = signUp;
