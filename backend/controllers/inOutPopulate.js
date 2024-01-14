@@ -99,8 +99,10 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
       }
     );
 
-    const exitDate =
-      student.history[student.history.length - 1].exitDate.toLocaleDateString();
+    const exitDate = new Date(
+      student.history[student.history.length - 1].exitDate - offsetMilliSeconds
+    ).toLocaleDateString();
+    console.log(exitDate);
     daysData = await dailySchema.findOneAndUpdate(
       {
         date: exitDate,
