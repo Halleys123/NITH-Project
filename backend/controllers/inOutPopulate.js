@@ -5,7 +5,7 @@ const studentSchema = require("../models/studentSchema");
 const dailySchema = require("../models/dailySchema");
 const offsetMilliSeconds = 5 * 60 * 60 * 1000 + 30 * 60 * 1000;
 const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
-  const { rollNo, reason, status } = req.body;
+  const { rollNo, reason, status, isNew } = req.body;
   if (!rollNo) {
     throw new CustomError("enterAValidRollNo");
   }
@@ -16,6 +16,69 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
   let student;
   let daysData;
   let dateNow = Date.now() + offsetMilliSeconds;
+  if (isNew) {
+    student = await studentSchema.create({
+      rollNo: rollNo,
+      isOut: !status,
+      history: [
+        {
+          exitDate: status ? null : dateNow,
+          exitGate: status ? null : gateMan.gateNo,
+          entryGate: status ? gateMan.gateNo : null,
+          entryDate: status ? dateNow : null,
+          reason: reason,
+        },
+      ],
+    });
+
+    daysData = await dailySchema.findOneAndUpdate(
+      { date: new Date().toLocaleDateString() }, // Invoke toLocaleDateString
+      {
+        $push: {
+          data: {
+            rollNo: rollNo,
+            searchId: student._id,
+            exitDate: status ? null : dateNow,
+            exitGate: status ? null : gateMan.gateNo,
+            entryGate: status ? gateMan.gateNo : null,
+            entryDate: status ? dateNow : null,
+            reason: reason,
+          },
+        },
+      },
+      { new: true } // If you want the modified document to be returned
+    );
+
+    if (!daysData) {
+      daysData = await dailySchema.create({
+        date: new Date().toLocaleDateString(),
+        data: [
+          {
+            rollNo: rollNo,
+            searchId: student._id,
+            exitDate: status ? null : dateNow,
+            exitGate: status ? null : gateMan.gateNo,
+            entryGate: status ? gateMan.gateNo : null,
+            entryDate: status ? dateNow : null,
+            reason: reason,
+          },
+        ],
+      });
+    }
+    const response = new Response(
+      true,
+      null,
+      {
+        message: `The Student with roll No ${rollNo} is ${
+          !status ? "out to" : "in from"
+        } ${reason}`,
+      },
+      "success",
+      200,
+      null
+    );
+    return res.status(response.statusCode).json(response);
+  }
   if (status == true) {
     student = await studentSchema.findOneAndUpdate(
       { rollNo: rollNo },
@@ -74,21 +137,6 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
         },
       }
     );
-    if (!student) {
-      student = await studentSchema.create({
-        rollNo: rollNo,
-        isOut: true,
-        history: [
-          {
-            exitDate: dateNow,
-            exitGate: gateMan.gateNo,
-            entryGate: null,
-            entryDate: null,
-            reason: reason,
-          },
-        ],
-      });
-    }
     daysData = await dailySchema.findOneAndUpdate(
       { date: new Date().toLocaleDateString() }, // Invoke toLocaleDateString
       {
