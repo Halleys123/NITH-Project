@@ -93,12 +93,20 @@ const getDaysData = asyncErrorHandler(async (req, res, next) => {
       {
         $project: {
           _id: 0, // Exclude the _id field from the output
-          data: { $slice: ["$allData", skip, pageSize] },
+          data: "$allData",
         },
       },
     ]);
-
-    const response = new Response(true, null, result, "success", 200, null);
+    console.log(result);
+    const noOfPages = Math.ceil(result[0].data.length / pageSize);
+    const response = new Response(
+      true,
+      null,
+      { result: result[0].data.splice(skip, pageSize), noOfPages },
+      "success",
+      200,
+      null
+    );
     return res.status(response.statusCode).json(response);
   }
 });

@@ -42,7 +42,7 @@ const getUnreturnedStudents = asyncErrorHandler(async (req, res, next) => {
     console.log(formattedFilter);
     const skip = (pageNo - 1) * pageSize;
 
-    const students = await studentSchema.aggregate([
+    const result = await studentSchema.aggregate([
       {
         $addFields: {
           lastHistory: { $arrayElemAt: ["$history", -1] },
@@ -54,12 +54,12 @@ const getUnreturnedStudents = asyncErrorHandler(async (req, res, next) => {
       {
         $sort: formattedSort,
       },
-      {
-        $skip: skip, // Skip documents based on the calculated skip value
-      },
-      {
-        $limit: pageSize, // Limit the number of documents returned per page
-      },
+      // {
+      //   $skip: skip, // Skip documents based on the calculated skip value
+      // },
+      // {
+      //   $limit: pageSize, // Limit the number of documents returned per page
+      // },
       {
         $project: {
           _id: 0,
@@ -69,8 +69,19 @@ const getUnreturnedStudents = asyncErrorHandler(async (req, res, next) => {
         },
       },
     ]);
+    let noOfPages = Math.ceil(result.length / pageSize);
 
-    const response = new Response(true, null, students, "success", 200, null);
+    const response = new Response(
+      true,
+      null,
+      {
+        result: result.splice(skip, pageSize),
+        noOfPages,
+      },
+      "success",
+      200,
+      null
+    );
     return res.status(response.statusCode).json(response);
   }
 });
