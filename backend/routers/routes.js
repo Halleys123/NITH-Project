@@ -15,5 +15,4 @@ router.route("/inOutPopulate").post(auth, inOutPopulate);
 router.route("/getDaysData").get(auth, getDaysData);
 router.route("/getStudentData").get(auth, getStudentData);
 router.route("/getUnreturnedStudents").get(auth, getUnreturnedStudents);
-
 module.exports = router;

@@ -1,11 +1,9 @@
-const dailySchema = require("../models/dailySchema");
 const CustomError = require("../utils/errors/CustomError");
 const asyncErrorHandler = require("../utils/errors/asyncErrorHandler");
 const Response = require("../utils/response/responseClass");
 const studentSchema = require("../models/studentSchema");
 const getUnreturnedStudents = asyncErrorHandler(async (req, res, next) => {
   let { pageNo = 0, pageSize = 10 } = req.query;
-
   pageNo = parseInt(pageNo);
   pageSize = parseInt(pageSize);
   if (req.adminData.role != "admin") {
@@ -14,6 +12,7 @@ const getUnreturnedStudents = asyncErrorHandler(async (req, res, next) => {
     const skip = (pageNo - 1) * pageSize;
     const students = await studentSchema
       .find({ isOut: true })
+      .sort({ "history.exitDate": 1 })
       .skip(skip)
       .limit(pageSize)
       .exec();
