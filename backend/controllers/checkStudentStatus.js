@@ -14,7 +14,7 @@ const checkStudentStatus = asyncErrorHandler(async (req, res, next) => {
     response = new Response(
       true,
       null,
-      { status: false, message: "Student is in the college" },
+      { status: false, isNew: true, message: "Student is in the college" },
       "success",
       200,
       null
@@ -26,6 +26,7 @@ const checkStudentStatus = asyncErrorHandler(async (req, res, next) => {
       null,
       {
         status: student.isOut,
+        isNew: false,
         message: student.isOut
           ? `The Student is out for ${student.reasonArray[student.reason]}`
           : `Student is in the college`,
