@@ -13,7 +13,7 @@ const dailySchema = new mongoose.Schema({
       entryDate: { type: Date },
       exitGate: { type: Number },
       entryGate: { type: Number },
-      reason: { type: String, enum: ["market", "home"] },
+      reason: { type: String, enum: ["market", "home"], default: "market" },
     },
   ],
 });
