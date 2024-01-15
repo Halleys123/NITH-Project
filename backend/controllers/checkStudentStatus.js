@@ -8,13 +8,16 @@ const checkStudentStatus = asyncErrorHandler(async (req, res, next) => {
   if (gateMan.role != "gateMan") {
     throw new CustomError("youAreNotTheGateMan", 403);
   }
-  const student = await studentSchema.findOne({ rollNo: rollNo });
+  const student = await studentSchema.findOne(
+    { rollNo: rollNo },
+    { history: false }
+  );
   let response;
   if (!student) {
     response = new Response(
       true,
       null,
-      { status: false, isNew: true, message: "Student is in the college" },
+      { student: null, message: "Student is in the college" },
       "success",
       200,
       null
@@ -25,8 +28,7 @@ const checkStudentStatus = asyncErrorHandler(async (req, res, next) => {
       true,
       null,
       {
-        status: student.isOut,
-        isNew: false,
+        student: student,
         message: student.isOut
           ? `The Student is out for ${student.reasonArray[student.reason]}`
           : `Student is in the college`,
