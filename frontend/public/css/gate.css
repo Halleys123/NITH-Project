@@ -1,0 +1,298 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+.page {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+.entrySection {
+  display: flex;
+  padding: 2.4rem 3.2rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+.footer {
+  display: flex;
+  padding: 2.4rem 3.2rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 0 0;
+  align-self: stretch;
+  background: #0d0d0d;
+}
+.logoAndName {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1.2rem;
+}
+.logo {
+  width: 4rem;
+  height: 4rem;
+}
+.name {
+  color: #fff;
+  font-family: Roboto Flex;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.aboutUs {
+  color: #fff;
+  text-align: center;
+  font-family: Roboto Flex;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  width: 82.5rem;
+}
+.finalFooter {
+  display: flex;
+  padding: 0.8rem 3.2rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+.nithLogoAndName {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.collegeName {
+  color: #fff;
+  font-family: Roboto Flex;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.aboutUsAndHelp {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  max-width: 10rem;
+}
+.aboutUs,
+.help {
+  color: #fff;
+  font-family: Roboto Flex;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.nameOfTheProject {
+  display: flex;
+  height: 6.4rem;
+  padding: 0rem 1.2rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+.nameSentry {
+  color: #000;
+  font-family: "Bree Serif";
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.exitAndLogOut {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  align-self: stretch;
+}
+.exit,
+.logOut {
+  display: flex;
+  width: 12rem;
+  height: 3.6rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.logOut:hover {
+  cursor: pointer;
+  background-color: #1e1e1e;
+  transition: all 100ms ease-in;
+}
+.exit {
+  color: #000;
+  font-family: Roboto Flex;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-radius: 3.2rem;
+  border: 0.1rem solid #000;
+}
+.logOut {
+  color: #fff;
+  font-family: Roboto Flex;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-radius: 3.2rem;
+  border: 0.1rem solid #1e1e1e;
+  background: #000;
+}
+.entryBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5.4rem;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+.start {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+}
+.welcome {
+  color: #989898;
+  font-family: Bree Serif;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.welcomeEnterTheRoll {
+  color: #000;
+  font-family: Bree Serif;
+  font-size: 3.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.inputAndCheckStatus {
+  display: flex;
+  padding: 0rem 1.2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+}
+.input {
+  display: flex;
+  width: 40rem;
+  font-family: Roboto Flex;
+  font-weight: 700;
+  padding: 1.6rem 3.2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 0.6rem;
+  border: none;
+  background: #fff;
+  box-shadow: 2px 2px 23.8px 0px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  font-size: 2rem;
+}
+
+.checkStatus {
+  border: none;
+  display: flex;
+  height: 5.4rem;
+  padding: 0.8rem 3.2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1.2rem;
+  background: #000;
+  box-shadow: 2px 2px 10.1px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: Roboto Flex;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  transition: all 100ms ease-in;
+}
+.checkStatus:hover {
+  cursor: pointer;
+  background: #1e1e1e;
+  transform: scale(1.025);
+  transition: all 100ms ease-in;
+}
+.statusBox {
+  display: flex;
+  width: 75rem;
+  min-height: 12rem;
+  padding: 2.4rem 3.2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  border-radius: 0.6rem;
+  background: #fff;
+  box-shadow: 4px 4px 19.3px 0px rgba(0, 0, 0, 0.25);
+  margin-bottom: 10rem;
+}
+.rollNoAndLastUpdated {
+  display: flex;
+  height: 3.8rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+.rollNo,
+.lastUpdated,
+.currently,
+.status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.rollNoHead,
+.statusHead,
+.currentlyHead {
+  color: #989898;
+  font-family: Bree Serif;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.rollNoEntry,
+.statusEntry,
+.currentlyEntry {
+  color: #000;
+  font-family: Bree Serif;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.lastUpdatedHead {
+  color: #989898;
+  font-family: Bree Serif;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.lastUpdatedEntry {
+  color: #000;
+  font-family: Bree Serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
