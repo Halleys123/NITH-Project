@@ -211,6 +211,7 @@ input:focus + label {
   left: 20px;
   transform: translateY(-22px);
   font-size: 12px;
+  background-color: #FFF;
 
 }
 label {
