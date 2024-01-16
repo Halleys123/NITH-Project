@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="singup.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../public/css/common.css" />
-  </head>
-  <body>
-    <div class="section1"></div>
-    <div class="section2"></div>
-    <div class="section3"></div>
-    <div class="section4"></div>
-    <div class="container">
-      <img src="../images/icons8-entry-96 1.png" alt="Avatar" class="avatar" />
-      <div class="overlay">
-        <h1 class="header">Welcome Back!</h1>
-        <h1 class="sheader">Secure student tracking in your hands.</h1>
-      </div>
-      <div class="form">
-        <div class="inp">
-          <input type="text" id="username" />
-          <label onclick="focusinp('usr')" for="username">Username</label>
-        </div>
-        <div class="inp">
-          <input type="password" id="password" />
-          <label onclick="focusinp('pass')" for="password">Password</label>
-        </div>
-        <div class="last">
-          <button class="btn">Login</button>
-        </div>
-        <p class="foot">Don't have an account yet? Create One Here</p>
-      </div>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="singup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../public/css/common.css">
+</head>
+
+<body>
+  <div class="section1"></div>
+  <div class="section2"></div>
+  <div class="section3"></div>
+  <div class="section4"></div>
+  <div class="container">
+    <img src="../images/icons8-entry-96 1.png" alt="Avatar" class="avatar">
+    <div class="overlay">
+      <h1 class="header">Welcome Back!</h1>
+      <h1 class="sheader">Secure student tracking in your hands.</h1>
     </div>
-    <script src="signup.js"></script>
-  </body>
+    <div class="form">
+      <input type="text" required name="email" class="input" placeholder="Username"
+        src="../images/icons8-entry-96 1.png">
+      <input type="text" required name="email" class="input" placeholder="Password">
+    </div>
+    <div class="last">
+      <button class="btn">Login</button>
+    </div>
+    <p class="foot">Don't have an account yet? Create One Here</p>
+  </div>
+  </div>
+</body>
+
 </html>
