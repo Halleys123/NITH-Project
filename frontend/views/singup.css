@@ -1,159 +1,4 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
 
-:root {
-  font-size: 100%;
-  --white: oklch(100% 0 0);
-  --primary-light: oklch(78.81% 0.109 255.212);
-  --primary: oklch(58.63% 0.227 281.34);
-  --primary-dark: oklch(47.56% 0.273 284.25);
-
- 
-}
-.heading {
-    color: #000;
-    font-family: Roboto Flex;
-    font-size: 2.4rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    display: flex;
-flex-direction: column;
-align-items: center;
-gap: 0.6rem;
-}
-
-•⁠⁠{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: "Inter", sans-serif;
-  background-color: #f5f5f5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  overflow: hidden;
-  font-size: 62.5%;
-  margin: 0;
-}
-
-.container {
-  display: flex;
-  width: 500px;
-  min-height: 550px;
-  padding: 32px 16px;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  background: #fff;
-  box-shadow: 4px 4px 49.2px -6px rgba(0, 0, 0, 0.25);
-}
-.sub-heading {
-    color: #777;
-    font-family: Roboto Flex;
-    font-size: 1.6rem;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-
-}
-
-.form-control {
-  display: flex;
-  flex-direction: column;
-  width: 25rem;
-  margin-bottom: 1rem;
-}
-
-.form-control input {
-  background-color: transparent;
-  border: 0;
-  border-bottom: 0.125rem var(--onBackground) solid;
-  display: block;
-  padding: 0.9rem;
-  border-radius: 0.4rem;
-border: 1px solid #000;
-background: #FFF;
-  font-size: 1.2rem;
-  color: var(--onBackground);
-  font-weight: 400;
-  transition: border-bottom-color 0.3s ease;
-}
-
-.form-control input:focus,
-.form-control input:valid {
-  outline: 0;
-  border-bottom-color: var(--primary);
-}
-
-.form-control label {
-  position: relative;
-  top: 0.9rem;
-  left: 0;
-  font-size: 1.2rem;
-  color: var(--greyLight-2);
-  transition: 300ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.form-control input:focus + label,
-.form-control input:valid + label {
-  top: 0.3rem;
-  font-size: 1rem;
-  color: var(--primary);
-}
-
-.btn {
-  cursor: pointer;
-  display: inline-block;
-
-  color: #fff;
-  font-family: Roboto Flex;
-  font-size: 1.6rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  padding: 0.9rem;
-
-  font-size: 1.2rem;
-  border: 0;
-  border-radius: 0.8rem;
-  transition: 300ms ease;
-  font-weight: 500;
-  display: flex;
-  width: 25rem;
-  height: 4.2rem;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  border-radius: 0.4rem;
-  background: #79c7c5;
-}
-
-.btn:hover {
-  background: #afdedc;
-}
-
-.texts {
-  text-align: right;
-}
-.texted {
-  color: #6a6a6a;
-  font-family: Roboto Flex;
-
-  font-style: normal;
-  line-height: normal;
-}
-.overlay
-{
-    display: flex;
-flex-direction: column;
-align-items: center;
-gap: 0.6rem;
-} */
 
 •⁠⁠{
     margin: 0;
@@ -324,4 +169,60 @@ left: -17.7rem;
 bottom: -10.8716rem;
 border-radius: 4.9rem 4.5rem 3.3rem 5.4rem;
 background: radial-gradient(83.35% 69.4% at 30.05% 50.08%, #99D19C 3.89%, #73AB84 100%);
+}
+
+.inp {
+  width: 350px;
+  height: 50px;
+  max-height: 50px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 10px;
+  outline: none;
+  transition: .4s;
+  border-radius: 0.4rem;
+border: 1px solid #000;
+background: #FFF;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 15px;
+}
+
+input:focus {
+  border: 2px solid #ADE1E5;
+}
+
+input:focus + label {
+    left: 20px;
+  transform: translateY(-22px);
+  font-size: 12px;
+  background-color: #FFF;
+}
+
+.up {
+  left: 20px;
+  transform: translateY(-22px);
+  font-size: 12px;
+
+}
+label {
+  position: absolute;
+  left: 10px;
+  color: #777780;
+  height: 20px;
+  transform: translateY(2.5px);
+  padding-left: 5px;
+  cursor: text;
+  padding-right: 5px;
+  transition: .2s;
+  font-family: Roboto Flex;
+  font-size: 1.6rem;
 }
