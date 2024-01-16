@@ -257,13 +257,19 @@ gap: 1rem;
   .btn 
   {
     display: flex;
-width: 40rem;
-height: 4.2rem;
-justify-content: center;
-align-items: center;
-gap: 1rem;
-border-radius: 0.4rem;
+    width: 40rem;
+    height: 4.2rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 0.4rem;
 background: #79C7C5;
+color: #FFF;
+font-family: Roboto Flex;
+font-size: 1.6rem;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
   }
   .foot
   {
@@ -318,16 +324,4 @@ left: -17.7rem;
 bottom: -10.8716rem;
 border-radius: 4.9rem 4.5rem 3.3rem 5.4rem;
 background: radial-gradient(83.35% 69.4% at 30.05% 50.08%, #99D19C 3.89%, #73AB84 100%);
-}
-.forgot
-{
-  position: absolute;
-  right: 0.9rem;
-  bottom: -2rem;
-  color: #6A6A6A;
-font-family: Roboto Flex;
-font-size: 1.2rem;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
 }
