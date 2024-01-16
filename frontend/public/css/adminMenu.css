@@ -1,0 +1,144 @@
+html {
+  font-size: 62.5%;
+}
+body {
+  overflow: hidden;
+}
+.main {
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+/* Menu Starts Here */
+.menu {
+  display: flex;
+  min-width: 30rem;
+  padding: 2.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.8rem;
+  align-self: stretch;
+  border-radius: 0px 16px 16px 0px;
+  background: #fff;
+  box-shadow: 3px 3px 30.5px -1px rgba(0, 0, 0, 0.25);
+}
+
+/* menu Icon */
+.menu__heading {
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  gap: 1rem;
+  align-self: stretch;
+}
+.menu__heading__image {
+  width: 4rem;
+  height: 4rem;
+}
+.menu__heading__text {
+  color: #000;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 2.4rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+/* Menu Icons Ends Here */
+/* Menu Box Start */
+.menu__box {
+  display: flex;
+  padding: 1.2rem 0.8rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  align-self: stretch;
+}
+.menu__button {
+  display: flex;
+  min-height: 2.4rem;
+  padding: 1.2rem 2.4rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 2.4rem;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+.menu__button__left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.menu__button__left__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.menu__button__left__text {
+  color: #000;
+  font-family: Roboto Flex;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.menu__button__right {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.menu__button__selected {
+  background: #84dd63;
+}
+.menu__button:hover {
+  background: #dfe3e8;
+}
+.menu__button__selected:hover {
+  background: #8dec6b;
+}
+
+.menu__button:active {
+  background: #84dd63;
+}
+.menu__info {
+  color: #989898;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.menu__button__logOut {
+  display: flex;
+  min-height: 2.4rem;
+  padding: 1.2rem 2.4rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  background: var(--Error, #ed6a5a);
+}
+.menu__button__logOut > .menu__button__left > .menu__button__left__text {
+  color: #fff;
+}
+
+.menu__button__logOut:hover {
+  background: #f18f7d;
+}
+
+.menu__button__logOut:active {
+  background: #ed6a5a;
+}
+/* Menu Ends Here */
+/* Content Starts here */
+.content {
+  display: flex;
+  padding: 2.4rem 3.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+  flex: 1 0 0;
+  align-self: stretch;
+}

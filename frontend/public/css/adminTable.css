@@ -1,0 +1,86 @@
+.content {
+  display: flex;
+  padding: 1.2rem 2.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+.content__tableForm {
+  display: flex;
+  padding: 1.6rem 2.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+  flex: 1 0 0;
+  align-self: stretch;
+  border-radius: 1.6rem;
+  background: #fff;
+  box-shadow: 4px 4px 9.4px 0px rgba(0, 0, 0, 0.25);
+}
+.content__tableForm__head {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.8rem;
+}
+.content__tableForm__head__icon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.content__tableForm__head__text {
+  color: #000;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 1.8rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.content__tableForm__desc {
+  color: #1e1e1e;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  align-self: stretch;
+}
+.table__sort {
+  display: flex;
+  padding: 0.4rem 0.8rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.2rem;
+  align-self: stretch;
+}
+.table__sort__top {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+.table__sort__by {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  align-self: stretch;
+}
+
+.table__sort__by__text {
+  color: #000;
+  text-align: center;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 2rem; /* 125% */
+  letter-spacing: 0.01rem;
+}
+.sortOne {
+  display: flex;
+  width: 20.7rem;
+  height: 4.8rem;
+  justify-content: center;
+  align-items: center;
+  gap: -0.1rem;
+}
