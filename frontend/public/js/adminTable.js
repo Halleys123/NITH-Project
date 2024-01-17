@@ -8,6 +8,63 @@ const totalPages = 12;
 
 const maxEntries = document.querySelector(".maxEntriesInput");
 
+class Confirmation {
+  constructor(dialogBoxType, question, yesCallback, noCallback) {
+    const frameA = document.createElement("frame-a");
+    const frameB = document.createElement("frame-b");
+    const framesStack = document.createElement("frames-stack");
+    const selectionConfirmationIcon = document.createElement(
+      "selection-confirmation-icon"
+    );
+    const confirmation = document.createElement("h3");
+    const areYouSure = document.createElement("div");
+    const confirmationDialog = document.createElement("div");
+
+    const toggleFrame = document.createElement("div");
+    const no = document.createElement("input");
+    const toggleFrame1 = document.createElement("div");
+    const yes = document.createElement("div");
+
+    frameA.classList.add("frame-a");
+    frameB.classList.add("frame-b");
+    framesStack.classList.add("frames-stack");
+    selectionConfirmationIcon.classList.add("selection-confirmation-icon");
+    confirmation.classList.add("confirmation");
+    areYouSure.classList.add("are-you-sure");
+    confirmationDialog.classList.add("confirmation-dialog");
+    toggleFrame.classList.add("toggle-frame");
+    no.classList.add("no");
+    toggleFrame1.classList.add("toggle-frame1");
+    yes.classList.add("yes");
+
+    confirmation.innerText = dialogBoxType;
+    areYouSure.innerText = question;
+    no.placeholder = "No";
+    yes.innerText = "Yes";
+
+    toggleFrame.appendChild(no);
+    toggleFrame1.appendChild(yes);
+    confirmationDialog.appendChild(toggleFrame);
+    confirmationDialog.appendChild(toggleFrame1);
+    frameB.appendChild(framesStack);
+    frameB.appendChild(selectionConfirmationIcon);
+    frameB.appendChild(confirmation);
+    frameB.appendChild(areYouSure);
+    frameB.appendChild(confirmationDialog);
+    frameA.appendChild(frameB);
+    this.dialogBox = frameA;
+    this.yes = yes;
+    this.no = no;
+    this.yesCallback = yesCallback;
+    this.noCallback = noCallback;
+    this.yes.addEventListener("click", this.yesCallback);
+    this.no.addEventListener("click", this.noCallback);
+  }
+  getDialogBox() {
+    return this.dialogBox;
+  }
+}
+
 sortByDate.forEach((item) => {
   item.addEventListener("click", (e) => {
     sortByDate.forEach((item) => {
@@ -66,3 +123,12 @@ pageMove[1].addEventListener("click", (e) => {
   }
   changeSelected();
 });
+
+document.querySelector(".pagination").appendChild(
+  new Confirmation(
+    "Question",
+    "Are you sure to do this",
+    () => {},
+    () => {}
+  ).getDialogBox()
+);

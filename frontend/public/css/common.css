@@ -6,8 +6,117 @@
 
 body {
   background-color: #f5f5f5;
+  margin: 0;
+  line-height: normal;
 }
-
 html {
   font-size: 62.5%;
+}
+:root {
+  /* fonts */
+  --font-bree-serif: "Bree Serif";
+
+  /* font sizes */
+  --font-size-sm: 1.4rem;
+
+  /* Colors */
+  --color-gray-100: #1e1e1e;
+  --color-white: #fff;
+
+  /* Gaps */
+  --gap-3xs: 1rem;
+
+  /* Paddings */
+  --padding-3xs: 1rem;
+  --padding-xl: 2rem;
+
+  /* Border radiuses */
+  --br-5xl: 24px;
+}
+.confirmationbox {
+  display: flex;
+  width: 50rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 0.8rem;
+  background: #fff;
+  box-shadow: 0px 0px 18.4px 11px rgba(0, 0, 0, 0.25);
+}
+.confirmationline {
+  display: flex;
+  height: 0.3rem;
+  align-items: center;
+  gap: 1rem;
+  align-self: stretch;
+  background: #f24f3b;
+}
+.confirmationboxIcon {
+  width: 3.2rem;
+  height: 3.2rem;
+}
+.confirmationboxMainText {
+  color: #000;
+  font-family: "Bree Serif";
+  font-size: 2.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.confirmationboxSubText {
+  color: #989898;
+  font-family: "Bree Serif";
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.confirmationbottom {
+  display: flex;
+  padding: 2.4rem 0rem;
+  justify-content: center;
+  align-items: center;
+  gap: 3.2rem;
+  align-self: stretch;
+  background: #eaeaea;
+}
+
+.confirmationbottomButtonText {
+  color: #fff;
+  font-family: "Bree Serif";
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.confirmationbottomButton {
+  display: flex;
+  width: 10rem;
+  height: 1.6rem;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.confirmationbottomButtonLeft {
+  border-radius: 2.4rem;
+  border: 1px solid #1e1e1e;
+  background: #fff;
+}
+.confirmationbottomButtonRight {
+  border-radius: 2.4rem;
+  border: 1px solid #1e1e1e;
+  background: #1e1e1e;
+}
+.confirmationbottomButtonLeftText {
+  color: #1e1e1e;
+}
+.confirmationbottomButtonLeft:hover {
+  background-color: #dedede;
+}
+.confirmationbottomButtonRight:hover {
+  background-color: #000;
 }
