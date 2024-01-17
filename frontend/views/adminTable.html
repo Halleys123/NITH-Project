@@ -14,6 +14,7 @@
     <title>Admin Table</title>
 
     <link rel="stylesheet" href="../public/css/common.css">
+    <link rel="stylesheet" href="../public/css/pagination.css">
     <link rel="stylesheet" href="../public/css/adminMenu.css">
     <link rel="stylesheet" href="../public/css/adminHead.css">
 
@@ -158,15 +159,246 @@
                 system to analyze specific student movements, extract valuable trends, and inform strategic
                 decision-making related to campus security, resource allocation, and student well-being.</span>
             <div class="table__sort">
-                <div class="table__sort__top">
+                <div class="filter">
+                    <div class="datePicker filterStyle">
+                        <input class="datePickerInput" type="date" name="date" id="datePickerInput">
+                        <div class="datePickerIconBox">
+                            <svg class="datePickerIcon" xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                viewBox="0 0 12 12" fill="none">
+                                <path d="M9.75 4.125L6 7.875L2.25 4.125" stroke="black" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="label">
+                            <span class="labelText">Start Date</span>
+                        </div>
 
+                    </div>
+                    <div class="datePicker filterStyle">
+                        <input class="datePickerInput" type="date" name="date" id="datePickerInput">
+                        <div class="datePickerIconBox">
+                            <svg class="datePickerIcon" xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                viewBox="0 0 12 12" fill="none">
+                                <path d="M9.75 4.125L6 7.875L2.25 4.125" stroke="black" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="label">
+                            <span class="labelText">End Date</span>
+                        </div>
+
+                    </div>
+                    <div class="gatePicker filterStyle">
+                        <!-- Drop down with options gate 1 and gate 2-->
+                        <select class="gatePickerInput" name="gate" id="gatePickerInput">
+                            <option value="gate1">Gate 1</option>
+                            <option value="gate2">Gate 2</option>
+                        </select>
+
+                        <div class="gatePickerIconBox">
+                            <svg class="gatePickerIcon" name="gatePickerInput" xmlns="http://www.w3.org/2000/svg"
+                                width="12" height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M9.75 4.125L6 7.875L2.25 4.125" stroke="black" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="label">
+                            <span class="labelText">End Date</span>
+                        </div>
+
+                    </div>
+                    <div class="maxEntries filterStyle">
+                        <!-- Drop down with options gate 1 and gate 2-->
+                        <input type="number" name="maxEntries" id="maxEntries" class="maxEntriesInput">
+
+                        <div class="maxEntriesIconBox">
+                            <svg class="maxEntriesIcon" name="maxEntries" xmlns="http://www.w3.org/2000/svg" width="12"
+                                height="12" viewBox="0 0 12 12" fill="none">
+                                <path d="M9.75 4.125L6 7.875L2.25 4.125" stroke="black" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="label">
+                            <span class="labelText">End Date</span>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="table__sort__by">
-                    <span class="table__sort__by__text">Sort By:</span>
-                    <div class="sortOne"></div>
+                <div class="sortOne">
+                    <span class="sortOne__text">Sort By:</span>
+                    <div class="sortOne__optns__date">
+                        <div
+                            class="sortOne__optns__date__item sortOne__optns__date__left sortOne__optns__date--selected">
+                            <svg class="sortOne__optns__date__left__icon" xmlns="http://www.w3.org/2000/svg" width="19"
+                                height="18" viewBox="0 0 19 18" fill="none">
+                                <path
+                                    d="M7.25 12.1274L4.1225 8.99988L3.0575 10.0574L7.25 14.2499L16.25 5.24988L15.1925 4.19238L7.25 12.1274Z"
+                                    fill="#1E1E1E" />
+                            </svg>
+                            <span class="sortOne__optns__date__left__text">Entry Date</span>
+                        </div>
+                        <div class="sortOne__optns__date__item sortOne__optns__date__right">
+                            <svg class="sortOne__optns__date__right__icon" xmlns="http://www.w3.org/2000/svg" width="19"
+                                height="18" viewBox="0 0 19 18" fill="none">
+                                <path
+                                    d="M7.25 12.1274L4.1225 8.99988L3.0575 10.0574L7.25 14.2499L16.25 5.24988L15.1925 4.19238L7.25 12.1274Z"
+                                    fill="#1E1E1E" />
+                            </svg>
+                            <span class="sortOne__optns__date__right__text">Entry Date</span>
+                        </div>
+                    </div>
+                    <div class="sortOne__optns__place">
+                        <div
+                            class="sortOne__optns__place__item sortOne__optns__place__left sortOne__optns__place--selected">
+                            <svg class="sortOne__optns__place__left__icon sortOne__optns__place__item__icon"
+                                xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18"
+                                fill="none">
+                                <path
+                                    d="M7.25 12.1274L4.1225 8.99988L3.0575 10.0574L7.25 14.2499L16.25 5.24988L15.1925 4.19238L7.25 12.1274Z"
+                                    fill="#1E1E1E" />
+                            </svg>
+                            <span
+                                class="sortOne__optns__place__left__text sortOne__optns__place__item__text">Home</span>
+                        </div>
+                        <div class="sortOne__optns__place__item sortOne__optns__place__middle">
+                            <svg class="sortOne__optns__place__middle__icon sortOne__optns__place__item__icon"
+                                xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18"
+                                fill="none">
+                                <path
+                                    d="M7.25 12.1274L4.1225 8.99988L3.0575 10.0574L7.25 14.2499L16.25 5.24988L15.1925 4.19238L7.25 12.1274Z"
+                                    fill="#1E1E1E" />
+                            </svg>
+                            <span
+                                class="sortOne__optns__place__middle__text sortOne__optns__place__item__text">All</span>
+                        </div>
+                        <div class="sortOne__optns__place__item sortOne__optns__place__right ">
+                            <svg class="sortOne__optns__place__right__icon sortOne__optns__place__item__icon"
+                                xmlns="http://www.w3.org/2000/svg" width="19" height="18" viewBox="0 0 19 18"
+                                fill="none">
+                                <path
+                                    d="M7.25 12.1274L4.1225 8.99988L3.0575 10.0574L7.25 14.2499L16.25 5.24988L15.1925 4.19238L7.25 12.1274Z"
+                                    fill="#1E1E1E" />
+                            </svg>
+                            <span
+                                class="sortOne__optns__place__right__text sortOne__optns__place__item__text">Market</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="table">
+                    <div class="tableHead">
+                        <div class="tableHeadItem">
+                            <span class="tableHeadItem__text">Serial Number</span>
+                        </div>
+                        <div class="tableHeadItem">
+                            <span class="tableHeadItem__text">Roll Number</span>
+                        </div>
+                        <div class="tableHeadItem">
+                            <span class="tableHeadItem__text">Exit Date</span>
+                        </div>
+                        <div class="tableHeadItem">
+                            <span class="tableHeadItem__text">Exit Gate</span>
+                        </div>
+                        <div class="tableHeadItem">
+                            <span class="tableHeadItem__text">Entry Date</span>
+                        </div>
+                        <div class="tableHeadItem">
+                            <span class="tableHeadItem__text">Entry Gate</span>
+                        </div>
+                        <div class="tableHeadItem">
+                            <span class="tableHeadItem__text">Purpose</span>
+                        </div>
+                        <div class="tableHeadItem">
+                            <span class="tableHeadItem__text">Current Status</span>
+                        </div>
+                    </div>
+                    <div class="tableItem">
+                        <div class="tableItemItem">
+                            <span class="tableItemItem__text">1</span>
+                        </div>
+                        <div class="tableItemItem">
+                            <span class="tableItemItem__text">22BCS024</span>
+                        </div>
+                        <div class="tableItemItem">
+                            <span class="tableItemItem__text"> 22 December 2023, 12:49:12 PM
+                            </span>
+                        </div>
+                        <div class="tableItemItem">
+                            <span class="tableItemItem__text">Gate 1</span>
+                        </div>
+                        <div class="tableItemItem">
+                            <span class="tableItemItem__text">-</span>
+                        </div>
+                        <div class="tableItemItem">
+                            <span class="tableItemItem__text">-</span>
+                        </div>
+                        <div class="tableItemItem">
+                            <span class="tableItemItem__text">Home</span>
+                        </div>
+                        <div class="tableItemTag tableItemTagWait">
+                            <svg class="tableItemTagIcon Returned" xmlns="http://www.w3.org/2000/svg" width="17"
+                                height="16" viewBox="0 0 17 16" fill="none">
+                                <path d="M3.375 8.5L7.375 12.5L13.375 3.5" stroke="black" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <svg class="tableItemTagIcon Waiting" xmlns="http://www.w3.org/2000/svg" width="17"
+                                height="16" viewBox="0 0 17 16" fill="none">
+                                <path
+                                    d="M12.375 1.5H5.375C5.10978 1.5 4.85543 1.60536 4.66789 1.79289C4.48036 1.98043 4.375 2.23478 4.375 2.5V4.75C4.37534 4.90519 4.41163 5.05818 4.48103 5.19698C4.55043 5.33579 4.65105 5.45662 4.775 5.55L8.04187 8L4.775 10.45C4.65105 10.5434 4.55043 10.6642 4.48103 10.803C4.41163 10.9418 4.37534 11.0948 4.375 11.25V13.5C4.375 13.7652 4.48036 14.0196 4.66789 14.2071C4.85543 14.3946 5.10978 14.5 5.375 14.5H12.375C12.6402 14.5 12.8946 14.3946 13.0821 14.2071C13.2696 14.0196 13.375 13.7652 13.375 13.5V11.2725C13.3746 11.1179 13.3387 10.9655 13.2698 10.8271C13.201 10.6886 13.1012 10.568 12.9781 10.4744L9.70438 8L12.9781 5.525C13.1012 5.43162 13.2011 5.31105 13.2699 5.17272C13.3388 5.03439 13.3747 4.88202 13.375 4.7275V2.5C13.375 2.23478 13.2696 1.98043 13.0821 1.79289C12.8946 1.60536 12.6402 1.5 12.375 1.5ZM12.375 2.5V3.5H5.375V2.5H12.375ZM12.375 13.5H5.375V11.25L8.875 8.625L12.375 11.2719V13.5ZM8.875 7.375L5.375 4.75V4.5H12.375V4.7275L8.875 7.375Z"
+                                    fill="black" />
+                            </svg>
+                            <svg class="tableItemTagIcon Cross" xmlns="http://www.w3.org/2000/svg" width="17"
+                                height="16" viewBox="0 0 17 16" fill="none">
+                                <path d="M4.375 12L12.375 4M4.375 4L12.375 12" stroke="black" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <svg class="tableItemTagIcon Warning" xmlns="http://www.w3.org/2000/svg" width="17"
+                                height="16" viewBox="0 0 17 16" fill="none">
+                                <path
+                                    d="M8.37488 5.99995V8.49995M2.17288 10.7506C1.59555 11.7506 2.31755 13 3.47155 13H13.2782C14.4315 13 15.1535 11.7506 14.5769 10.7506L9.67421 2.25195C9.09688 1.25195 7.65288 1.25195 7.07555 2.25195L2.17288 10.7506ZM8.37488 10.5H8.37955V10.5053H8.37488V10.5Z"
+                                    stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span class="tableItemTag__text tableItemTag__textRet">Returned</span>
+                            <span class="tableItemTag__text tableItemTag__textWait">Waiting</span>
+                            <span class="tableItemTag__text tableItemTag__textCross">Crossed</span>
+                            <span class="tableItemTag__text tableItemTag__textWarn">Warning</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination">
+                    <div class="pageBox">
+                        <div class="pageBoxItem pageBoxLeft pageMove"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M15.16 7.41L10.58 12L15.16 16.59L13.75 18L7.75003 12L13.75 6L15.16 7.41Z"
+                                    fill="#1e1e1e" />
+                            </svg></div>
+                        <div class="pageBoxNumbers">
+
+                            <div class="pageBoxItem pageBoxPage selectedPage"> <span class="pageBoxItemNum ">1</span>
+                            </div>
+                            <div class="pageBoxItem pageBoxPage"> <span class="pageBoxItemNum">2</span>
+                            </div>
+                            <div class="pageBoxItem pageBoxPage"> <span class="pageBoxItemNum">3</span>
+                            </div>
+                            <div class="pageBoxItem pageBoxPage"> <span class="pageBoxItemNum">4</span>
+                            </div>
+                            <div class="pageBoxItem pageBoxPage"> <span class="pageBoxItemNum">5</span>
+                            </div>
+                            <div class="pageBoxItemStyle">
+                                <input type="text" class="pageBoxItemSearch" placeholder="..." value="">
+                            </div>
+                        </div>
+                        <div class="pageBoxItem pageBoxLeft pageMove"><svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                height="24" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M8.84009 7.41L13.4201 12L8.84009 16.59L10.2501 18L16.2501 12L10.2501 6L8.84009 7.41Z"
+                                    fill="#1E1E1E" />
+                            </svg>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 </body>
+<script src="../public/js/adminTable.js"></script>
 
 </html>
