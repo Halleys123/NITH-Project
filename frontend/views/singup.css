@@ -90,7 +90,7 @@ body {
 }
 .btn {
   display: flex;
-  width: 35rem;
+  width: 40rem;
   height: 4.2rem;
   justify-content: center;
   align-items: center;
@@ -231,7 +231,7 @@ label {
   transform: translateY(-50%);
 }
 .img-container img {
-  width: 25px; /* Adjust the width as needed */
+  width: 20px; 
   height: auto;
   cursor: pointer;
 }
