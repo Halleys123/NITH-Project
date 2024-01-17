@@ -25,14 +25,12 @@ document.addEventListener("DOMContentLoaded", function () {
       usernameInput.classList.remove("error-border");
       passwordInput.classList.remove("error-border");
 
-      alert("Authorization logic goes here!");
     } else {
       usernameInput.style.border = "2px solid red";
       passwordInput.style.border = "2px solid red";
       usernameInput.classList.add("error-border");
       passwordInput.classList.add("error-border");
 
-      alert("Please enter both username and password");
     }
   }
 
