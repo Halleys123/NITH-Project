@@ -32,26 +32,51 @@
           </div>
           <div class="inputAndCheckStatus">
             <input class="input" placeholder="Enter roll number" />
-            <button class="checkStatus">Check Status</button>
+            <button class="checkStatus" disabled="true">Check Status</button>
           </div>
           <div class="statusBox">
             <div class="rollNoAndLastUpdated">
               <div class="rollNo">
-                <div class="rollNoHead">Roll No.:</div>
-                <div class="rollNoEntry">22BCS046</div>
+                <span class="rollNoHead">Roll No.:</span>
+                <span class="rollNoEntry noSelection">No Selection</span>
               </div>
               <div class="lastUpdated">
-                <div class="lastUpdatedHead">Last Updated:</div>
-                <div class="lastUpdatedEntry">No Selection</div>
+                <span class="lastUpdatedHead">Last Updated:</span>
+                <span class="lastUpdatedEntry noSelection">No Selection</span>
               </div>
             </div>
             <div class="currently">
-              <div class="currentlyHead">Last Updated:</div>
-              <div class="currentlyEntry">No Selection</div>
+              <span class="currentlyHead">Currently At:</span>
+              <span class="currentlyEntry noSelection">No Selection</span>
             </div>
             <div class="status">
-              <div class="statusHead">Last Updated:</div>
-              <div class="statusEntry">No Selection</div>
+              <span class="statusHead">Status:</span>
+              <span class="statusEntry noSelection">No Selection</span>
+            </div>
+            <div class="questions empty">
+              <div class="questionHead">Questions:</div>
+              <div class="question1">
+                <div class="mainQuestion">
+                  Where does the student want to go?
+                </div>
+                <div class="options">
+                  <div class="option1 optionIntoCollege">Into the college</div>
+                  <div class="option2 optionOutOfCollege">
+                    Outside the College
+                  </div>
+                </div>
+              </div>
+              <div class="question2">
+                <div class="mainQuestion questionAlteration">
+                  Select where does he want to go?
+                </div>
+                <div class="options">
+                  <div class="option1 optionMarket optionAlteration1">
+                    Market
+                  </div>
+                  <div class="option2 optionHome optionAlteration2">Home</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -82,5 +107,7 @@
         </div>
       </div>
     </div>
+    <script src="../public/js/commonjs.js"></script>
+    <script src="../public/js/gate.js"></script>
   </body>
 </html>

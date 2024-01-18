@@ -2,10 +2,9 @@
   padding: 0;
   margin: 0;
 }
+
 .page {
   display: flex;
-  width: 100vw;
-  height: 100vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -232,10 +231,16 @@
   transform: scale(1.025);
   transition: all 100ms ease-in;
 }
+.checkStatus:disabled {
+  cursor: not-allowed;
+  background: #989898;
+  transform: scale(1);
+}
 .statusBox {
   display: flex;
   width: 75rem;
-  min-height: 12rem;
+  max-height: 100%;
+  transition: all 0.2s ease;
   padding: 2.4rem 3.2rem;
   flex-direction: column;
   align-items: flex-start;
@@ -260,10 +265,14 @@
   flex-direction: column;
   align-items: flex-start;
 }
+.lastUpdated {
+  opacity: 0;
+  transition: all 100ms ease-in;
+}
 .rollNoHead,
 .statusHead,
 .currentlyHead {
-  color: #989898;
+  color: #505050;
   font-family: Bree Serif;
   font-size: 1.2rem;
   font-style: normal;
@@ -275,13 +284,15 @@
 .currentlyEntry {
   color: #000;
   font-family: Bree Serif;
+  display: flex;
+  flex-direction: row;
   font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
 .lastUpdatedHead {
-  color: #989898;
+  color: #191818;
   font-family: Bree Serif;
   font-size: 1.2rem;
   font-style: normal;
@@ -295,4 +306,178 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+.noSelection {
+  color: #807f7f;
+}
+.college {
+  display: flex;
+  padding: 0.2rem 1.2rem 0.4rem 1.2rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.4rem;
+  color: rgb(53, 104, 47);
+  border-radius: 0.6rem;
+  background: rgba(132, 221, 99, 0.54);
+}
+.market {
+  display: flex;
+  padding: 0.2rem 1.2rem 0.4rem 1.2rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.4rem;
+  color: rgb(58, 53, 13);
+  border-radius: 0.6rem;
+  background: rgba(249, 229, 66, 0.6);
+}
+.home {
+  display: flex;
+  padding: 0.2rem 1.2rem 0.4rem 1.2rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0.4rem;
+  color: rgb(255, 255, 255);
+  border-radius: 0.6rem;
+  background: rgba(66, 0, 255, 0.67);
+}
+.question1 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0rem;
+}
+
+.questionHead {
+  color: #989898;
+  font-family: Bree Serif;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #1e1e1e;
+}
+.mainQuestion {
+  color: #000;
+  color: rgb(0, 0, 0);
+  font-family: Bree Serif;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.options {
+  margin-top: 0.4rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+.option2,
+.option1 {
+  display: flex;
+  width: 12rem;
+  height: 2rem;
+  padding: 0.6rem 1.2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 2.4rem;
+  border: 1px solid #000;
+  color: #1e1e1e;
+  /* background: rgb(242, 255, 0); */
+  font-family: Bree Serif;
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  transition: all 400ms ease;
+}
+.option1:hover,
+.option2:hover {
+  cursor: pointer;
+  background: #dedede;
+  color: black;
+  transition: all 400ms ease;
+}
+.selected {
+  background: rgba(0, 0, 0);
+  color: white;
+}
+.selected:hover {
+  background: rgba(0, 0, 0);
+  color: white;
+}
+.questions {
+  gap: 2rem;
+  max-height: 0;
+  gap: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+.question1,
+.question2 {
+  max-height: 0;
+}
+.question2 {
+  margin-top: 1.5rem;
+}
+.questions:not(:not(.empty)) {
+  max-height: 0;
+  overflow: hidden;
+}
+.questions:not(:not(.empty)) > .question2 {
+  max-height: 0;
+  overflow: hidden;
+}
+.questions:not(:not(.outCollege)) > .question2 {
+  max-height: 100%;
+}
+.questions:not(:not(.notRegistered)) > .question1 {
+  max-height: 100%;
+}
+.questions:not(:not(.notRegistered)) > .question2 {
+  max-height: 0;
+  overflow: hidden;
+}
+.qustions:not(:not(.registered)) > .question1 {
+  max-height: 0;
+  overflow: hidden;
+}
+.questions:not(:not(.registered)) > .question2 {
+  max-height: 100%;
+}
+.questions:not(:not(.notRegistered)) {
+  max-height: 100%;
+  overflow: hidden;
+}
+.questions:not(:not(.outCollege)) {
+  max-height: 100%;
+  overflow: hidden;
+}
+.questions:not(:not(.inCollege)) {
+  max-height: 100%;
+  overflow: hidden;
+}
+.questions:not(:not(.inCollege)) > .question2 {
+  max-height: 0%;
+  overflow: hidden;
+}
+.questions:not(:not(.outCollege)) > .question1 {
+  max-height: 100%;
+}
+.questions:not(:not(.inCollege)) > .question2 {
+  max-height: 0%;
+}
+.questions:not(:not(.registered)) > .question2 {
+  max-height: 100%;
+  overflow: hidden;
+}
+.questions:not(:not(.registered)) > .question1 {
+  max-height: 0%;
+  overflow: hidden;
+}
+.questions:not(:not(.registered)) {
+  max-height: 100%;
+  overflow: hidden;
 }
