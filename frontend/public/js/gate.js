@@ -11,6 +11,10 @@ const questions = document.querySelector(".questions");
 const questionAlteration = document.querySelector(".questionAlteration");
 const optionAlteration1 = document.querySelector(".optionAlteration1");
 const optionAlteration2 = document.querySelector(".optionAlteration2");
+const comfirmationWrapper = document.querySelector(".confirmationWrapper");
+const confirmationboxSubText = document.querySelector(
+  ".confirmationboxSubText"
+);
 let selectedOptions = {
   status: false,
   isNew: false,
@@ -148,6 +152,8 @@ optionIntoCollege.addEventListener("click", () => {
   questions.classList.remove("outCollege");
   questions.classList.remove("notRegistered");
   console.log(selectedOptions);
+  confirmationboxSubText.innerText = `The Student with the roll no ${rollNoEntry.innerText} wants to Come into the college.`;
+  comfirmationWrapper.style.display = "block";
 });
 const optionOutOfCollege = document.querySelector(".optionOutOfCollege");
 optionOutOfCollege.addEventListener("click", () => {
@@ -168,6 +174,8 @@ optionMarket.addEventListener("click", () => {
   optionHome.classList.remove("selected");
   selectedOptions.reason = "market";
   console.log(selectedOptions);
+  confirmationboxSubText.innerText = `The Student with rollNo ${rollNoEntry.innerText} wants to go to market.`;
+  comfirmationWrapper.style.display = "block";
 });
 const optionHome = document.querySelector(".optionHome");
 optionHome.addEventListener("click", () => {
@@ -175,4 +183,6 @@ optionHome.addEventListener("click", () => {
   optionHome.classList.add("selected");
   selectedOptions.reason = "home";
   console.log(selectedOptions);
+  confirmationboxSubText.innerText = `The Student with rollNo ${rollNoEntry.innerText} wants to go to market.`;
+  comfirmationWrapper.style.display = "block";
 });
