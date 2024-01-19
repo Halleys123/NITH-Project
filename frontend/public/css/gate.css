@@ -12,12 +12,11 @@
 }
 .entrySection {
   display: flex;
-  padding: 2.4rem 3.2rem;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  flex: 1 0 0;
   align-self: stretch;
+  min-height: 100vh;
+  flex-direction: column;
+  padding: 0rem 3.2rem;
+  align-items: flex-start;
 }
 .footer {
   display: flex;
@@ -184,7 +183,7 @@
 }
 .inputAndCheckStatus {
   display: flex;
-  padding: 0rem 1.2rem;
+  /* padding: 0rem 1.2rem; */
   justify-content: center;
   align-items: center;
   gap: 1.6rem;
@@ -200,12 +199,15 @@
   gap: 1rem;
   border-radius: 0.6rem;
   border: none;
+  outline: 1px solid transparent;
   background: #fff;
   box-shadow: 2px 2px 23.8px 0px rgba(0, 0, 0, 0.25);
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  transition: outline 100ms ease-in;
 }
 
+/* lovebabbar striver */
 .checkStatus {
   border: none;
   display: flex;
@@ -228,7 +230,6 @@
 .checkStatus:hover {
   cursor: pointer;
   background: #1e1e1e;
-  transform: scale(1.025);
   transition: all 100ms ease-in;
 }
 .checkStatus:disabled {
@@ -236,11 +237,99 @@
   background: #989898;
   transform: scale(1);
 }
+.questions {
+  gap: 2rem;
+  max-height: 0;
+  gap: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+.confirmationWrapper {
+  display: none;
+}
+.overlay {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  backdrop-filter: blur(4px);
+}
+.confirmationbox {
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.datePickerIconBox {
+  display: flex;
+  width: 1.2rem;
+  height: 1.2rem;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+
+  /* Hide for now */
+  display: none;
+}
+.datePickerIcon {
+  flex: 1 0 0;
+  align-self: stretch;
+}
+.datePickerInput {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+.filterStyle {
+  display: flex;
+  max-width: 20rem;
+  min-width: 18rem;
+  /* height: 4.8rem; */
+  padding: 1.2rem 1.8rem;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.4rem;
+  font-size: 2rem;
+  outline: 0.5px solid #000;
+  background-color: white;
+  box-shadow: 2px 2px 23.8px 0px rgba(0, 0, 0, 0.25);
+  position: relative;
+  transition: height 0.4s ease-in-out;
+  /* transition: padding 0.1s ease-in-out; */
+}
+.hideDate {
+  max-width: 0;
+  max-height: 0;
+  overflow: hidden;
+  padding: 0;
+  outline: 0px transparent;
+}
+
+.labelText {
+  color: #1e1e1e;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.datePickerInput {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+
 .statusBox {
   display: flex;
-  width: 75rem;
-  max-height: 100%;
-  transition: all 0.2s ease;
+  min-width: 75rem;
+  height: fit-content;
   padding: 2.4rem 3.2rem;
   flex-direction: column;
   align-items: flex-start;
@@ -248,68 +337,36 @@
   border-radius: 0.6rem;
   background: #fff;
   box-shadow: 4px 4px 19.3px 0px rgba(0, 0, 0, 0.25);
-  margin-bottom: 10rem;
 }
-.rollNoAndLastUpdated {
+.statusBoxItem {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.statusBoxTop {
   display: flex;
   height: 3.8rem;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
 }
-.rollNo,
-.lastUpdated,
-.currently,
-.status {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-.lastUpdated {
-  opacity: 0;
-  transition: all 100ms ease-in;
-}
-.rollNoHead,
-.statusHead,
-.currentlyHead {
-  color: #505050;
-  font-family: Bree Serif;
+.statusBoxItemHead {
+  color: #989898;
+  font-family: "Bree Serif";
   font-size: 1.2rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-.rollNoEntry,
-.statusEntry,
-.currentlyEntry {
+.statusBoxItemEntry {
   color: #000;
-  font-family: Bree Serif;
-  display: flex;
-  flex-direction: row;
+  font-family: "Bree Serif";
   font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-.lastUpdatedHead {
-  color: #191818;
-  font-family: Bree Serif;
-  font-size: 1.2rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-.lastUpdatedEntry {
-  color: #000;
-  font-family: Bree Serif;
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-}
-.noSelection {
-  color: #807f7f;
-}
+
 .college {
   display: flex;
   padding: 0.2rem 1.2rem 0.4rem 1.2rem;
@@ -340,163 +397,112 @@
   border-radius: 0.6rem;
   background: rgba(66, 0, 255, 0.67);
 }
-.question1 {
+.invalidRoll {
+  outline: 1px solid var(--Error, #ed6a5a);
+  transition: outline 300ms ease-in;
+}
+.validRoll {
+  outline: 1px solid var(--Success, #66de93);
+  transition: outline 300ms ease-in;
+}
+.inputFeilds {
+  display: flex;
+  /* padding: 0rem 1.2rem; */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.6rem;
+}
+.inputFeildsQuests {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  /* gap: 1.2rem; */
+  padding: 0rem 1.2rem;
+  align-self: stretch;
+  max-height: fit-content;
+}
+.inputFeildsItemBox {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0rem;
+  margin-top: 0.6rem;
+  gap: 0.8rem;
+  transition: all 0.4s ease;
+  max-height: 80rem;
+}
+.quest {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.options {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+.option {
+  display: flex;
+  min-width: 8rem;
+  padding: 0.8rem 2rem;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 2.4rem;
+  outline: 1px solid #000;
+  color: #1e1e1e;
+  transition: background-color 200ms ease-in;
+}
+.option:hover {
+  cursor: pointer;
+  background-color: #dedede;
+  transition: background-color 100ms ease-in;
+}
+.selectedOption {
+  background-color: #1e1e1e;
+}
+.selectedOption .optionText {
+  color: #fff;
 }
 
-.questionHead {
+.selectedOption:hover {
+  cursor: pointer;
+  background-color: #000;
+  transition: background-color 100ms ease-in;
+}
+
+.optionText {
+  color: #1e1e1e;
+  font-family: "Bree Serif";
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.label {
   color: #989898;
-  font-family: Bree Serif;
+  font-family: "Bree Serif";
   font-size: 1.2rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  color: #1e1e1e;
 }
-.mainQuestion {
+.question {
   color: #000;
-  color: rgb(0, 0, 0);
-  font-family: Bree Serif;
+  font-family: "Bree Serif";
   font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 }
-.options {
-  margin-top: 0.4rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 0.4rem;
-}
-.option2,
-.option1 {
-  display: flex;
-  width: 12rem;
-  height: 2rem;
-  padding: 0.6rem 1.2rem;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  border-radius: 2.4rem;
-  border: 1px solid #000;
-  color: #1e1e1e;
-  /* background: rgb(242, 255, 0); */
-  font-family: Bree Serif;
-  font-size: 1.4rem;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  transition: all 400ms ease;
-}
-.option1:hover,
-.option2:hover {
-  cursor: pointer;
-  background: #dedede;
-  color: black;
-  transition: all 400ms ease;
-}
-.selected {
-  background: rgba(0, 0, 0);
-  color: white;
-}
-.selected:hover {
-  background: rgba(0, 0, 0);
-  color: white;
-}
-.questions {
-  gap: 2rem;
+.hide {
   max-height: 0;
-  gap: 0;
+  flex: 0 0 0;
+  padding: 0;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.2s ease;
-}
-.question1,
-.question2 {
-  max-height: 0;
-}
-.question2 {
-  margin-top: 1.5rem;
-}
-.questions:not(:not(.empty)) {
-  max-height: 0;
-  overflow: hidden;
-}
-.questions:not(:not(.empty)) > .question2 {
-  max-height: 0;
-  overflow: hidden;
-}
-.questions:not(:not(.outCollege)) > .question2 {
-  max-height: 100%;
-}
-.questions:not(:not(.notRegistered)) > .question1 {
-  max-height: 100%;
-}
-.questions:not(:not(.notRegistered)) > .question2 {
-  max-height: 0;
-  overflow: hidden;
-}
-.qustions:not(:not(.registered)) > .question1 {
-  max-height: 0;
-  overflow: hidden;
-}
-.questions:not(:not(.registered)) > .question2 {
-  max-height: 100%;
-}
-.questions:not(:not(.notRegistered)) {
-  max-height: 100%;
-  overflow: hidden;
-}
-.questions:not(:not(.outCollege)) {
-  max-height: 100%;
-  overflow: hidden;
-}
-.questions:not(:not(.inCollege)) {
-  max-height: 100%;
-  overflow: hidden;
-}
-.questions:not(:not(.inCollege)) > .question2 {
-  max-height: 0%;
-  overflow: hidden;
-}
-.questions:not(:not(.outCollege)) > .question1 {
-  max-height: 100%;
-}
-.questions:not(:not(.inCollege)) > .question2 {
-  max-height: 0%;
-}
-.questions:not(:not(.registered)) > .question2 {
-  max-height: 100%;
-  overflow: hidden;
-}
-.questions:not(:not(.registered)) > .question1 {
-  max-height: 0%;
-  overflow: hidden;
-}
-.questions:not(:not(.registered)) {
-  max-height: 100%;
-  overflow: hidden;
-}
-.confirmationWrapper {
-  display: none;
-}
-.overlay {
-  position: absolute;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  backdrop-filter: blur(4px);
-}
-.confirmationbox {
-  z-index: 3;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  padding: 0;
+  outline: 0px transparent;
+  transition: max-height 0.4s ease-in;
+  margin-top: 0rem;
 }

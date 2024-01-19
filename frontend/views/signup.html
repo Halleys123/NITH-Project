@@ -5,13 +5,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="stylesheet" href="singup.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
     href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="../public/css/common.css" />
+  <link rel="stylesheet" href="../public/css/singup.css" />
 </head>
 
 <body>
@@ -27,26 +27,30 @@
     </div>
     <div class="form">
       <div class="inp">
-        <input type="text" id="username" />
-        <label onclick="focusinp('usr')" for="username">Username</label>
+        <input type="text" id="username" count=0>
+        <label onclick="focusinp('usr')" for="username" class="label">Username</label>
         <div class="img-container">
           <img src="../images/icons8-google-glass-96.png" alt="Username Image" />
         </div>
       </div>
       <div class="inp">
-        <input type="password" id="password" />
-        <label onclick="focusinp('pass')" for="password">Password</label>
+        <input type="password" id="password" count=1 />
+        <label onclick="focusinp('pass')" for="password" class="label">Password</label>
         <div class="img-container">
           <img src="../images/icons8-double-tap-96.png" alt="Password Image" />
         </div>
       </div>
       <div class="last">
-        <button class="btn">Login</button>
+        <button class="btn" disabled>Login</button>
       </div>
-      <p class="foot">Don't have an account yet? Create One Here</p>
+      <p class="foot">Don't have an account yet?
+        <span class="createAccount">
+          Create One Here
+        </span>
+      </p>
     </div>
   </div>
-  <script src="signup.js"></script>
+  <script src="../public/js/signup.js"></script>
 </body>
 
 </html>
