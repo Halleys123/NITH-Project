@@ -5,10 +5,14 @@ const studentSchema = require("../models/studentSchema");
 const dailySchema = require("../models/dailySchema");
 const offsetMilliSeconds = 5 * 60 * 60 * 1000 + 30 * 60 * 1000;
 const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
-  const { rollNo, reason, status, isNew } = req.body;
+  let { rollNo, reason, status, expectedEntryDate } = req.body;
+
+  let isNew;
+  console.log(status);
   if (!rollNo) {
-    throw new CustomError("enterAValidRollNo");
+    throw new CustomError("enterAValidRollNo", 400);
   }
+  rollNo = rollNo.toUpperCase();
   let gateMan = req.adminData;
   if (gateMan.role != "gateMan") {
     throw new CustomError("youAreNotTheGateMan", 403);
@@ -16,6 +20,34 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
   let student;
   let daysData;
   let dateNow = Date.now() + offsetMilliSeconds;
+  const foundStudent = await studentSchema.findOne({ rollNo });
+
+  if (!foundStudent) {
+    isNew = true;
+    if (status != true && status != false) {
+      throw new CustomError("PleaseSendStudentsStatus", 400);
+    }
+  } else {
+    isNew = false;
+    if (!foundStudent.isAllowed) {
+      throw new CustomError("thisStudentIsNotAllowed", 400);
+    }
+    status = foundStudent.isOut;
+  }
+  if (reason == "market" && status == false) {
+    expectedEntryDate = new Date();
+    expectedEntryDate.setHours(29, 29, 0, 0);
+  } else if (reason == "home" && status == false) {
+    if (!expectedEntryDate) {
+      throw new CustomError("PleaseGiveExpectedEntryDate", 400);
+    }
+    console.log("helllo");
+    expectedEntryDate = new Date(expectedEntryDate);
+    if (dateNow > expectedEntryDate.getTime()) {
+      throw new CustomError("exoectedReturnDateCantBeSmallerYThanDateNow");
+    }
+  }
+
   if (isNew) {
     student = await studentSchema.create({
       rollNo: rollNo,
@@ -24,6 +56,7 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
         {
           exitDate: status ? null : dateNow,
           exitGate: status ? null : gateMan.gateNo,
+          expectedEntryDate: status ? null : expectedEntryDate,
           entryGate: status ? gateMan.gateNo : null,
           entryDate: status ? dateNow : null,
           reason: reason,
@@ -32,7 +65,7 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
     });
 
     daysData = await dailySchema.findOneAndUpdate(
-      { date: new Date().toLocaleDateString() }, // Invoke toLocaleDateString
+      { date: new Date().toLocaleDateString() },
       {
         $push: {
           data: {
@@ -40,13 +73,14 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
             searchId: student._id,
             exitDate: status ? null : dateNow,
             exitGate: status ? null : gateMan.gateNo,
+            expectedEntryDate: status ? null : expectedEntryDate,
             entryGate: status ? gateMan.gateNo : null,
             entryDate: status ? dateNow : null,
             reason: reason,
           },
         },
       },
-      { new: true } // If you want the modified document to be returned
+      { new: true }
     );
 
     if (!daysData) {
@@ -58,6 +92,7 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
             searchId: student._id,
             exitDate: status ? null : dateNow,
             exitGate: status ? null : gateMan.gateNo,
+            expectedEntryDate: status ? null : expectedEntryDate,
             entryGate: status ? gateMan.gateNo : null,
             entryDate: status ? dateNow : null,
             reason: reason,
@@ -80,13 +115,24 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
     return res.status(response.statusCode).json(response);
   }
   if (status == true) {
+    let isLate = false;
+    let lateTimes = foundStudent.lateTimes;
+    const expectedDate = new Date(
+      foundStudent.history[foundStudent.history.length - 1].expectedEntryDate
+    );
+    if (dateNow > expectedDate.getTime()) {
+      isLate = true;
+      lateTimes += 1;
+    }
     student = await studentSchema.findOneAndUpdate(
       { rollNo: rollNo },
       {
         isOut: false,
         $set: {
+          lateTimes: lateTimes,
           "history.$[elem].entryDate": dateNow,
           "history.$[elem].entryGate": gateMan.gateNo,
+          "history.$[elem].isLate": isLate,
         },
       },
       {
@@ -111,6 +157,7 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
         $set: {
           "data.$[elem].entryGate": gateMan.gateNo,
           "data.$[elem].entryDate": dateNow,
+          "data.$[elem].isLate": isLate,
         },
       },
       {
@@ -132,6 +179,7 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
           history: {
             exitDate: dateNow,
             exitGate: gateMan.gateNo,
+            expectedEntryDate: expectedEntryDate,
             entryGate: null,
             entryDate: null,
             reason: reason,
@@ -148,13 +196,14 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
             searchId: student._id,
             exitGate: gateMan.gateNo,
             exitDate: dateNow,
+            expectedEntryDate: expectedEntryDate,
             entryDate: null,
             entryGate: null,
             reason: reason,
           },
         },
       },
-      { new: true } // If you want the modified document to be returned
+      { new: true }
     );
 
     if (!daysData) {
