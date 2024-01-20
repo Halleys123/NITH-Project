@@ -8,7 +8,7 @@ const checkStudentStatus = asyncErrorHandler(async (req, res, next) => {
   if (gateMan.role != "gateMan") {
     throw new CustomError("youAreNotTheGateMan", 403);
   }
-  console.log(req.body);
+  // console.log(req.body);
   const student = await studentSchema.findOne({ rollNo: rollNo });
   let response;
   if (!student) {

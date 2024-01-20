@@ -33,15 +33,22 @@ html {
   /* Border radiuses */
   --br-5xl: 24px;
 }
-.skelton {
+.skeleton {
   animation: skelton-loading 1s ease-in-out infinite alternate;
+  background: linear-gradient(270deg, #c2c2c2, #f5f5f5, #c2c2c2);
+  background-size: 200% 200%;
+}
+.skeleton-text {
+  min-width: 12rem;
+  border-radius: 0.2rem;
+  height: 1.8rem;
 }
 @keyframes skelton-loading {
   0% {
-    background-color: #f5f5f5;
+    background-position: 100% 50%;
   }
   100% {
-    background-color: #c2c2c2;
+    background-position: 0% 50%;
   }
 }
 .confirmationbox {
@@ -101,6 +108,7 @@ html {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  user-select: none;
 }
 .confirmationbottomButton {
   display: flex;
@@ -130,4 +138,271 @@ html {
 }
 .confirmationbottomButtonRight:hover {
   background-color: #000;
+}
+.messageBox {
+  display: inline-flex;
+  min-width: 30rem;
+  padding: 1.2rem 4.2rem 1.2rem 1.2rem;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 0.4rem;
+  border: 1.5px solid #74d0a9;
+  background: #ecfdf5;
+  position: fixed;
+  right: 1.2rem;
+  bottom: 4.8rem;
+  transform: translateX(calc(100% + 1.2rem));
+  transition: all 0.5s ease-in-out;
+}
+.messageBoxIcon {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+.messageBoxText {
+  color: #677770;
+  font-family: "Bree Serif";
+  font-size: 1.4rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.messageBoxShow {
+  transform: translateX(calc(0%));
+  transition: all 0.5s ease-in-out;
+}
+
+.blurDesign {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+.blockedPerson {
+  outline: 1.5px solid #e0372e;
+}
+.confirmBox {
+  outline: 1.5px solid #74d0a9;
+}
+.overlayBoxDesignIcon {
+  width: 7.2rem;
+  height: 7.2rem;
+  flex-shrink: 0;
+}
+.overlayBoxDesignHead {
+  color: #000;
+  font-family: "Bree Serif";
+  font-size: 2.4rem;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 400;
+}
+.overlayBoxDesignSub {
+  color: #989898;
+  text-align: center;
+  font-family: "Roboto Flex";
+  font-size: 1.6rem;
+  /* letter-spacing: 1.5px; */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.2rem; /* 157.143% */
+  /* text-align: justify; */
+}
+.overlayBoxDesignButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1;
+  width: 12rem;
+  height: 3.2rem;
+  padding: 0.4rem 1.2rem;
+
+  border-radius: 0.4rem;
+
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.overlayBoxDesignButtonText {
+  color: white;
+  font-size: 1.8rem;
+  font-family: "Bree Serif";
+}
+
+.blockedPersonButton {
+  background: #ffa7a6;
+}
+.blockedPersonButton:hover {
+  background: #e0372e;
+}
+.blockedPersonButton:active {
+  background: #ffa7a6;
+}
+.flex-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  /* height: fit-content; */
+  gap: 1.2rem;
+  padding: 1.6rem 0;
+}
+.confirmBoxButton-cancel {
+  outline: 1px solid #e0372e;
+  transition: all 0.2s ease-in-out;
+}
+.confirmBoxButtonText-cancel {
+  color: #e0372e;
+  transition: all 0.2s ease-in-out;
+}
+.confirmBoxButton-cancel:hover > .confirmBoxButtonText-cancel {
+  color: white;
+}
+.confirmBoxButton-cancel:hover {
+  background: #e0372e;
+}
+.confirmBoxButton-cancel:active {
+  background: #ffa7a6;
+}
+.confirmBoxButton-cancel:hover > .confirmBoxButtonText-cancel {
+  color: white;
+}
+.confirmBoxButton-confirm {
+  outline: 1px solid #74d0a9;
+  background-color: #74d0a9;
+  transition: all 0.2s ease-in-out;
+}
+.confirmBoxButton-confirm {
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+.confirmBoxButton-confirm:hover {
+  background-color: #7be6ba;
+}
+.confirmBoxButton-confirm:active {
+  background-color: #74d0a9;
+}
+.overlayBoxDesignMin {
+  display: flex;
+  padding: 1.2rem 0rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  align-self: stretch;
+  z-index: 5;
+}
+.blurDesignBG {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+
+.blurBackgroundConfirmbg {
+  background-color: #a6ffa93a;
+  transition: all 0.2s ease-in-out;
+  animation: fadeinGreen 2s infinite;
+}
+
+.bgBlur {
+  background-color: #ffa7a63a;
+  transition: all 0.2s ease-in-out;
+  animation: fadeinRed 2s infinite;
+}
+.overlayBoxDesign {
+  display: flex;
+  width: 36rem;
+  min-height: 40rem;
+  padding: 1rem 2.4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  flex-shrink: 0;
+  border-radius: 1.2rem;
+  background: #fff;
+  box-shadow: 2px 2px 8.4px 0px rgba(0, 0, 0, 0.25);
+
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+@keyframes fadeinRed {
+  0%,
+  100% {
+    background-color: #ff7876c7;
+    opacity: 0.5;
+  }
+  50% {
+    background-color: #ffa7a63a;
+
+    opacity: 1;
+  }
+}
+@keyframes fadeinGreen {
+  0%,
+  100% {
+    background-color: #74d0a9c7;
+    opacity: 0.5;
+  }
+  50% {
+    background-color: #a6ffa93a;
+
+    opacity: 1;
+  }
+}
+.showOverlay {
+  opacity: 1;
+  max-height: 100vh;
+  max-width: 100vw;
+  transition: all 0.2s ease-in-out;
+}
+
+.finalData {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+}
+.finalDataItem {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  align-items: center;
+  /* width: fit-content; */
+}
+.finalDataItemTextKey {
+  color: #989898;
+  font-family: "Roboto Slab";
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.finalDataItemTextVal {
+  color: #000;
+  font-family: "Roboto Slab";
+  font-weight: 800;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

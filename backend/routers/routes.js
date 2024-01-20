@@ -10,6 +10,7 @@ const getFilteredStudentData = require("../controllers/getFilteredStudentData");
 const blockStudent = require("../controllers/blockStudent");
 const unblockStudent = require("../controllers/unblockStudent");
 const router = express.Router();
+
 router.route("/adminSignup").post(signUp);
 router.route("/adminLogin").post(logIn);
 router.route("/checkStudentStatus").post(auth, checkStudentStatus);
