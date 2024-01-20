@@ -20,7 +20,7 @@
 }
 .footer {
   display: flex;
-  padding: 2.4rem 3.2rem;
+  padding: 2.4rem 1.2rem 0.8rem 1.2rem;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
@@ -58,7 +58,7 @@
 }
 .finalFooter {
   display: flex;
-  padding: 0.8rem 3.2rem;
+  padding: 1.2rem 1.6rem;
   justify-content: space-between;
   align-items: center;
   align-self: stretch;
@@ -366,37 +366,6 @@
   font-weight: 400;
   line-height: normal;
 }
-
-.college {
-  display: flex;
-  padding: 0.2rem 1.2rem 0.4rem 1.2rem;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0.4rem;
-  color: rgb(53, 104, 47);
-  border-radius: 0.6rem;
-  background: rgba(132, 221, 99, 0.54);
-}
-.market {
-  display: flex;
-  padding: 0.2rem 1.2rem 0.4rem 1.2rem;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0.4rem;
-  color: rgb(58, 53, 13);
-  border-radius: 0.6rem;
-  background: rgba(249, 229, 66, 0.6);
-}
-.home {
-  display: flex;
-  padding: 0.2rem 1.2rem 0.4rem 1.2rem;
-  justify-content: center;
-  align-items: center;
-  margin-top: 0.4rem;
-  color: rgb(255, 255, 255);
-  border-radius: 0.6rem;
-  background: rgba(66, 0, 255, 0.67);
-}
 .invalidRoll {
   outline: 1px solid var(--Error, #ed6a5a);
   transition: outline 300ms ease-in;
@@ -496,6 +465,12 @@
   font-weight: 400;
   line-height: normal;
 }
+.inputFeildsQuests {
+  box-shadow: 2px 2px 23.8px 0px rgba(0, 0, 0, 0.25);
+  padding: 1.2rem 2.4rem 2.4rem;
+  border-radius: 0.6rem;
+}
+
 .hide {
   max-height: 0;
   flex: 0 0 0;
@@ -505,4 +480,20 @@
   outline: 0px transparent;
   transition: max-height 0.4s ease-in;
   margin-top: 0rem;
+}
+.skeleton-text-data {
+  border-radius: 0.4rem;
+  padding: 0 2px;
+}
+.marketTag {
+  background: rgba(249, 229, 66, 0.6);
+}
+.homeTag {
+  background: rgba(66, 0, 255, 0.47);
+}
+.collegeTag {
+  background: rgba(132, 221, 99, 0.54);
+}
+.noDataTag {
+  background-color: #dedede;
 }
