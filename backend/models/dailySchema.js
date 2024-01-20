@@ -12,6 +12,8 @@ const dailySchema = new mongoose.Schema({
       exitDate: { type: Date },
       entryDate: { type: Date },
       exitGate: { type: Number },
+      isLate: { type: Boolean, default: false },
+      expectedEntryDate: { type: Date },
       entryGate: { type: Number },
       reason: { type: String, enum: ["market", "home"], default: "market" },
     },

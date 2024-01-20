@@ -2,7 +2,7 @@ const CustomError = require("../utils/errors/CustomError");
 const asyncErrorHandler = require("../utils/errors/asyncErrorHandler");
 const Response = require("../utils/response/responseClass");
 const studentSchema = require("../models/studentSchema");
-const getUnreturnedStudents = asyncErrorHandler(async (req, res, next) => {
+const getFilteredStudentData = asyncErrorHandler(async (req, res, next) => {
   let { pageNo = 0, pageSize = 10, isOut, filter, sort } = req.query;
   pageNo = parseInt(pageNo);
   pageSize = parseInt(pageSize);
@@ -13,6 +13,11 @@ const getUnreturnedStudents = asyncErrorHandler(async (req, res, next) => {
     let formattedSort = {};
     if (!sort) {
       formattedSort["lastHistory.exitDate"] = -1;
+    }
+    if (sort.lateTimes) {
+      formattedSort["lateTimes"] =
+        sort.lateTimes == "1" || sort.lateTimes == "-1" ? +sort.lateTimes : -1;
+      delete sort.lateTimes;
     }
     if (isOut) {
       isOut = isOut == "false" ? false : true;
@@ -54,17 +59,13 @@ const getUnreturnedStudents = asyncErrorHandler(async (req, res, next) => {
       {
         $sort: formattedSort,
       },
-      // {
-      //   $skip: skip, // Skip documents based on the calculated skip value
-      // },
-      // {
-      //   $limit: pageSize, // Limit the number of documents returned per page
-      // },
       {
         $project: {
           _id: 0,
           rollNo: 1,
           isOut: 1,
+          isAllowed: 1,
+          lateTimes: 1,
           history: 1,
         },
       },
@@ -85,4 +86,4 @@ const getUnreturnedStudents = asyncErrorHandler(async (req, res, next) => {
     return res.status(response.statusCode).json(response);
   }
 });
-module.exports = getUnreturnedStudents;
+module.exports = getFilteredStudentData;

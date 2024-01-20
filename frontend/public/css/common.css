@@ -108,6 +108,7 @@ html {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  user-select: none;
 }
 .confirmationbottomButton {
   display: flex;
@@ -169,89 +170,8 @@ html {
   transform: translateX(calc(0%));
   transition: all 0.5s ease-in-out;
 }
-.blockedPerson {
-  display: flex;
-  width: 36rem;
-  height: 40rem;
-  padding: 1rem 3.2rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 0.8rem;
-  flex-shrink: 0;
-  border-radius: 1.2rem;
-  background: #fff;
-  box-shadow: 2px 2px 8.4px 0px rgba(0, 0, 0, 0.25);
 
-  position: fixed;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
-
-  outline: 1.5px solid #e0372e;
-}
-
-.blockedPersonIcon {
-  width: 7.2rem;
-  height: 7.2rem;
-  flex-shrink: 0;
-}
-.blockedPersonHead {
-  color: #000;
-  font-family: "Bree Serif";
-  font-size: 2.4rem;
-  font-style: normal;
-  line-height: normal;
-  font-weight: 400;
-}
-.blockedPersonSub {
-  color: #989898;
-  text-align: center;
-  font-family: "Roboto Flex";
-  font-size: 1.6rem;
-  /* letter-spacing: 1.5px; */
-  font-style: normal;
-  font-weight: 400;
-  line-height: 2.2rem; /* 157.143% */
-  /* text-align: justify; */
-}
-.blockedPersonButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-
-  width: 12rem;
-  height: 3.2rem;
-  padding: 0.4rem 1.2rem;
-
-  border-radius: 0.4rem;
-
-  background: #ffa7a6;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-}
-.blockedPersonButtonText {
-  color: white;
-  font-size: 1.8rem;
-  font-family: "Bree Serif";
-}
-.blockedPersonButton:hover {
-  background: #e0372e;
-}
-.blockedpersonbutton:active {
-  background: #ffa7a6;
-}
-.blockedPersonMin {
-  display: flex;
-  padding: 1.2rem 0rem;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
-  align-self: stretch;
-  z-index: 5;
-}
-.blur {
+.blurDesign {
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -269,7 +189,120 @@ html {
   overflow: hidden;
   transition: all 0.2s ease-in-out;
 }
-.bgBlur {
+.blockedPerson {
+  outline: 1.5px solid #e0372e;
+}
+.confirmBox {
+  outline: 1.5px solid #74d0a9;
+}
+.overlayBoxDesignIcon {
+  width: 7.2rem;
+  height: 7.2rem;
+  flex-shrink: 0;
+}
+.overlayBoxDesignHead {
+  color: #000;
+  font-family: "Bree Serif";
+  font-size: 2.4rem;
+  font-style: normal;
+  line-height: normal;
+  font-weight: 400;
+}
+.overlayBoxDesignSub {
+  color: #989898;
+  text-align: center;
+  font-family: "Roboto Flex";
+  font-size: 1.6rem;
+  /* letter-spacing: 1.5px; */
+  font-style: normal;
+  font-weight: 400;
+  line-height: 2.2rem; /* 157.143% */
+  /* text-align: justify; */
+}
+.overlayBoxDesignButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1;
+  width: 12rem;
+  height: 3.2rem;
+  padding: 0.4rem 1.2rem;
+
+  border-radius: 0.4rem;
+
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.overlayBoxDesignButtonText {
+  color: white;
+  font-size: 1.8rem;
+  font-family: "Bree Serif";
+}
+
+.blockedPersonButton {
+  background: #ffa7a6;
+}
+.blockedPersonButton:hover {
+  background: #e0372e;
+}
+.blockedPersonButton:active {
+  background: #ffa7a6;
+}
+.flex-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  /* height: fit-content; */
+  gap: 1.2rem;
+  padding: 1.6rem 0;
+}
+.confirmBoxButton-cancel {
+  outline: 1px solid #e0372e;
+  transition: all 0.2s ease-in-out;
+}
+.confirmBoxButtonText-cancel {
+  color: #e0372e;
+  transition: all 0.2s ease-in-out;
+}
+.confirmBoxButton-cancel:hover > .confirmBoxButtonText-cancel {
+  color: white;
+}
+.confirmBoxButton-cancel:hover {
+  background: #e0372e;
+}
+.confirmBoxButton-cancel:active {
+  background: #ffa7a6;
+}
+.confirmBoxButton-cancel:hover > .confirmBoxButtonText-cancel {
+  color: white;
+}
+.confirmBoxButton-confirm {
+  outline: 1px solid #74d0a9;
+  background-color: #74d0a9;
+  transition: all 0.2s ease-in-out;
+}
+.confirmBoxButton-confirm {
+  color: white;
+  transition: all 0.2s ease-in-out;
+}
+.confirmBoxButton-confirm:hover {
+  background-color: #7be6ba;
+}
+.confirmBoxButton-confirm:active {
+  background-color: #74d0a9;
+}
+.overlayBoxDesignMin {
+  display: flex;
+  padding: 1.2rem 0rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  align-self: stretch;
+  z-index: 5;
+}
+.blurDesignBG {
   height: 100vh;
   width: 100vw;
   position: fixed;
@@ -280,12 +313,39 @@ html {
   justify-content: center;
   align-items: center;
   z-index: 0;
-  background-color: #ffa7a63a;
-
-  transition: all 0.2s ease-in-out;
-  animation: fadein 2s infinite;
 }
-@keyframes fadein {
+
+.blurBackgroundConfirmbg {
+  background-color: #a6ffa93a;
+  transition: all 0.2s ease-in-out;
+  animation: fadeinGreen 2s infinite;
+}
+
+.bgBlur {
+  background-color: #ffa7a63a;
+  transition: all 0.2s ease-in-out;
+  animation: fadeinRed 2s infinite;
+}
+.overlayBoxDesign {
+  display: flex;
+  width: 36rem;
+  min-height: 40rem;
+  padding: 1rem 2.4rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  flex-shrink: 0;
+  border-radius: 1.2rem;
+  background: #fff;
+  box-shadow: 2px 2px 8.4px 0px rgba(0, 0, 0, 0.25);
+
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+}
+@keyframes fadeinRed {
   0%,
   100% {
     background-color: #ff7876c7;
@@ -297,10 +357,52 @@ html {
     opacity: 1;
   }
 }
+@keyframes fadeinGreen {
+  0%,
+  100% {
+    background-color: #74d0a9c7;
+    opacity: 0.5;
+  }
+  50% {
+    background-color: #a6ffa93a;
+
+    opacity: 1;
+  }
+}
 .showOverlay {
   opacity: 1;
   max-height: 100vh;
   max-width: 100vw;
-
   transition: all 0.2s ease-in-out;
+}
+
+.finalData {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 1.2rem;
+}
+.finalDataItem {
+  display: flex;
+  flex-direction: row;
+  gap: 0.4rem;
+  align-items: center;
+  /* width: fit-content; */
+}
+.finalDataItemTextKey {
+  color: #989898;
+  font-family: "Roboto Slab";
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.finalDataItemTextVal {
+  color: #000;
+  font-family: "Roboto Slab";
+  font-weight: 800;
+  font-size: 1.6rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

@@ -5,11 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
-    rel="stylesheet" />
+    href="https://fonts.googleapis.com/css2?family=Bree+Serif&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto+Slab:wght@100..900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../public/css/common.css" />
   <link rel="stylesheet" href="../public/css/gate.css" />
 </head>
@@ -82,7 +82,7 @@
                 <div class="noDataOption noDataOption1 option option1" value="Home" number="0">
                   <span class="noDataOptionText noDataOption1Text optionText option1Text">Home</span>
                 </div>
-                <div class="noDataOption noDataOption2 option option1" value="Exit College" number="1">
+                <div class="noDataOption noDataOption2 option option1" value="Market" number="1">
                   <span class="noDataOptionText noDataOption2Text optionText option1Text">Market</span>
                 </div>
               </div>
@@ -141,9 +141,9 @@
 
         </div>
       </div>
-      <div class="blur">
-        <div class="bgBlur"></div>
-        <div class="blockedPerson">
+      <div class="blurDesign blur">
+        <div class="blurDesignBG bgBlur"></div>
+        <div class="blockedPerson overlayBoxDesign">
           <svg xmlns="http://www.w3.org/2000/svg" width="84" height="85" viewBox="0 0 64 65" fill="none">
             <path
               d="M8.32004 17.78C7.98056 17.78 7.65499 17.9149 7.41494 18.1549C7.1749 18.395 7.04004 18.7206 7.04004 19.06C7.04004 19.3995 7.1749 19.7251 7.41494 19.9651C7.65499 20.2052 7.98056 20.34 8.32004 20.34C8.65952 20.34 8.98509 20.2052 9.22514 19.9651C9.46518 19.7251 9.60004 19.3995 9.60004 19.06C9.60004 18.7206 9.46518 18.395 9.22514 18.1549C8.98509 17.9149 8.65952 17.78 8.32004 17.78Z"
@@ -197,12 +197,43 @@
               d="M31.9999 40.9794C29.7688 40.9794 27.66 40.1134 26.0613 38.5422C26.0383 38.5256 26.0203 38.5115 26.0043 38.4955C25.9883 38.4802 25.9743 38.4616 25.9602 38.4437C24.3864 36.8398 23.5205 34.7304 23.5205 32.5C23.5205 27.8242 27.324 24.0206 31.9992 24.0206C36.6738 24.0206 40.4779 27.8242 40.4792 32.5C40.4792 37.1758 36.6757 40.9794 31.9999 40.9794ZM31.9992 24.3406C27.5007 24.3406 23.8405 28.0008 23.8405 32.5C23.8405 34.6466 24.6731 36.6754 26.1855 38.2152L26.2859 38.3138C27.8245 39.8261 29.8533 40.6594 31.9999 40.6594C36.4991 40.6594 40.1592 36.9992 40.1592 32.5C40.1579 28.0008 36.4971 24.3406 31.9992 24.3406ZM31.9992 39.3576C30.46 39.3576 29.0008 38.8514 27.7791 37.8939L27.637 37.7826L37.2818 28.1377L37.3931 28.2798C38.3506 29.5016 38.8568 30.9608 38.8568 32.5006C38.8568 36.2811 35.781 39.3576 31.9992 39.3576ZM28.1202 37.7518C29.2543 38.5934 30.5919 39.0376 31.9992 39.0376C35.6043 39.0376 38.5368 36.1051 38.5368 32.5C38.5368 31.0926 38.0927 29.755 37.2511 28.6203L28.1202 37.7518ZM26.7167 36.8616L26.6053 36.7195C25.6479 35.4984 25.1416 34.0392 25.1416 32.4994C25.1416 28.7176 28.2181 25.6411 31.9992 25.6411C33.5397 25.6411 34.9989 26.1473 36.2194 27.1054L36.3615 27.2168L26.7167 36.8616ZM31.9992 25.9618C28.3947 25.9618 25.4616 28.8949 25.4616 32.5C25.4616 33.9074 25.9051 35.2443 26.7474 36.379L35.8783 27.2481C34.7448 26.4065 33.4072 25.9618 31.9992 25.9618Z"
               fill="#472B29" />
           </svg>
-          <div class="blockedPersonMin">
-            <span class="blockedPersonHead">Oops</span>
-            <span class="blockedPersonSub">This person is not allowed by the admin to enter the college</span>
+          <div class="overlayBoxDesignMin blockedPersonMin">
+            <span class="overlayBoxDesignHead blockedPersonHead">Oops</span>
+            <span class="overlayBoxDesignSub blockedPersonSub">This person is not allowed by the admin to enter the
+              college</span>
           </div>
-          <div class="blockedPersonButton">
-            <span class="blockedPersonButtonText">Got It</span>
+          <div class="overlayBoxDesignButton blockedPersonButton">
+            <span class="overlayBoxDesignButtonText blockedPersonButtonText">Got It</span>
+          </div>
+        </div>
+      </div>
+      <div class="blurDesign blurBackgroundConfirm">
+        <div class="blurDesignBG blurBackgroundConfirmbg"></div>
+        <div class="overlayBoxDesign confirmBox">
+          <span class="overlayBoxDesignHead confirmBoxHead">Confirm</span>
+          <span class="overlayBoxDesignSub confirmBoxSub">Are you want to Continue with the following selection</span>
+
+          <div class="finalData">
+            <div class="finalDataItem">
+              <span class="finalDataRoll finalDataItemTextKey">Roll No: </span>
+              <span class="finalDataRollVal finalDataItemTextVal">22bcs024</span>
+            </div>
+            <div class="finalDataItem">
+              <span class="finalDataGoingTo finalDataItemTextKey">Going to: </span>
+              <span class="finalDataGoingToVal finalDataItemTextVal">College</span>
+            </div>
+            <div class="finalDataItem">
+              <span class="finalDataReturnBy finalDataItemTextKey">Return By:</span>
+              <span class="finalDataReturnByVal finalDataItemTextVal">Today</span>
+            </div>
+          </div>
+          <div class="flex-right">
+            <div class="overlayBoxDesignButton confirmBoxButton confirmBoxButton-cancel ">
+              <span class="overlayBoxDesignButtonText confirmBoxButtonText-cancel ">Cancel</span>
+            </div>
+            <div class="overlayBoxDesignButton confirmBoxButton confirmBoxButton-confirm">
+              <span class="overlayBoxDesignButtonText confirmBoxButtonText-confirm">Confirm</span>
+            </div>
           </div>
         </div>
       </div>

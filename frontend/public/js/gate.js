@@ -21,7 +21,13 @@ const noDataOptions = document.querySelectorAll(".noDataOption");
 const noDataOptionsValue = document.querySelectorAll(".noDataOptionText");
 //  --------------------------------------------------------------------
 
-const confirmationbox = document.querySelector(".confirmationbox");
+const confirmationBox = document.querySelector(".blurBackgroundConfirm");
+const confirmationBoxButtons = document.querySelectorAll(".confirmBoxButton");
+const confirmBoxFinalData = document.querySelectorAll(".finalDataItemTextVal");
+const confirmBoxSub = document.querySelector(".confirmBoxSub");
+const cancelButton = document.querySelector(".confirmBoxButton-cancel");
+const confirmButton = document.querySelector(".confirmBoxButton-confirm");
+// -------------------------------------------------
 const studentData = document.querySelectorAll(".studentData");
 // -------------------------------------------------
 const errorOverlay = document.querySelector(".blur");
@@ -88,9 +94,18 @@ const valid = {
   isGoingMarket: false,
   date: false,
 
+  goingTo: null,
+
   expectedReturnDate: null,
   rollNo: null,
 };
+const finalData = {
+  // Do not change the order
+  rollNo: null,
+  goingTo: null,
+  returnBy: null,
+};
+// -------------------------------------------------
 function init() {
   checkStatus.setAttribute("disabled", true);
 }
@@ -114,13 +129,35 @@ function dateConversion(date) {
   const result = `${formattedTime} ${formattedDate}`;
   return result;
 }
-function fillQuestion(question, options) {
+function todayTomorrowDate(dateInput) {
+  const today = new Date();
+  const date = new Date(dateInput);
+  if (
+    today.getDate() === date.getDate() &&
+    today.getMonth() === date.getMonth() &&
+    today.getFullYear() === date.getFullYear()
+  ) {
+    return "Today";
+  } else if (
+    today.getDate() + 1 === date.getDate() &&
+    today.getMonth() === date.getMonth() &&
+    today.getFullYear() === date.getFullYear()
+  ) {
+    return "Tomorrow";
+  } else {
+    return date.toLocaleDateString("en-GB", {
+      timeZone: "GMT",
+    });
+  }
+}
+function fillQuestion(question, option) {
   questionValue.innerText = question;
   for (let i = 0; i < optionsValue.length; i++) {
-    optionsValue[i].textContent = options[i];
-    console.log(optionsValue);
-    optionsValue[i].setAttribute("value", options[i]);
+    optionsValue[i].textContent = option[i];
+    // console.log(optionsValue);
   }
+  for (let i = 0; i < options.length; i++)
+    options[i].setAttribute("value", option[i]);
 }
 function fillStudentObject(rollNo, date, currently, status, cssTag) {
   // This order should not be changed
@@ -261,9 +298,30 @@ async function getStudentData() {
 rollInput.addEventListener("input", async () => {
   const regex = /^[0-9]{2}[a-z0-9]{3}[0-9]{3}$/;
 
+  noDataOptions.forEach((option) => {
+    option.classList.remove("selectedOption");
+  });
+  options.forEach((option) => {
+    option.classList.remove("selectedOption");
+  });
+  question.classList.add("hide");
+  mainQuestionBox.classList.add("hide");
+  noDataBox.classList.add("hide");
+  datePicker.classList.add("hide");
+  checkStatus.setAttribute("disabled", true);
+
+  Object.keys(valid).forEach((key) => {
+    valid[key] = false;
+  });
+  valid.expectedReturnDate = null;
+  valid.rollNo = null;
+  valid.date = false;
+  datePickerInput.value = "";
+  console.log(valid.expectedReturnDate);
   rollInput.value = rollInput.value.toLowerCase();
   if (regex.test(rollInput.value)) {
     valid.input = true;
+
     if (rollInput.value.length == 8) {
       valid.rollNo = rollInput.value;
       valid.showQuestion = true;
@@ -276,6 +334,7 @@ rollInput.addEventListener("input", async () => {
       rollInput.classList.remove("invalidRoll");
       rollInput.classList.remove("validRoll");
     }
+    inputHandler();
   } else {
     valid.input = false;
     options.forEach((option) => {
@@ -293,7 +352,6 @@ rollInput.addEventListener("input", async () => {
       rollInput.classList.add("validRoll");
     }
   }
-  inputHandler();
 });
 blockedStudentButton.addEventListener("click", () => {
   errorOverlay.classList.remove("showOverlay");
@@ -307,8 +365,11 @@ datePicker.addEventListener("input", (e) => {
   // If date is today or after that then console correct
   if (new Date(datePickerInput.value) >= new Date()) {
     valid.date = true;
+    valid.expectedReturnDate = datePickerInput.value;
   } else {
     valid.date = false;
+    datePickerInput.value = "";
+    valid.expectedReturnDate = null;
   }
   inputHandler();
 });
@@ -321,30 +382,64 @@ datePicker.addEventListener("input", (e) => {
 options.forEach((option) => {
   option.addEventListener("click", () => {
     noDataBox.classList.add("hide");
+    valid.expectedReturnDate = null;
+    datePickerInput.value = "";
+
+    valid.date = false;
     options.forEach((option) => {
       option.classList.remove("selectedOption");
     });
     option.classList.add("selectedOption");
-    console.log(option.getAttribute("value"));
     if (option.getAttribute("value") == "Home") {
       valid.isGoingOut = true;
       valid.isGoingToCollege = false;
       valid.isGoingHome = true;
       valid.isGoingMarket = false;
+      valid.goingTo = "Home";
+      datePicker.classList.remove("hide");
     } else if (option.getAttribute("value") == "Market") {
       valid.isGoingOut = true;
       valid.isGoingToCollege = false;
       valid.isGoingMarket = true;
       valid.isGoingHome = false;
+      valid.goingTo = "Market";
+      datePicker.classList.add("hide");
     } else if (option.getAttribute("value") == "in College") {
       valid.isGoingToCollege = true;
       valid.isGoingOut = false;
       valid.isGoingHome = false;
       valid.isGoingMarket = false;
+      valid.goingTo = "College";
+      datePicker.classList.add("hide");
     } else if (option.getAttribute("value") == "out of College") {
       valid.isGoingToCollege = false;
       valid.isGoingOut = true;
+      valid.isGoingHome = false;
+      valid.isGoingMarket = false;
+
+      valid.date = false;
+      valid.expectedReturnDate = null;
+
       noDataBox.classList.remove("hide");
+      datePicker.classList.add("hide");
+
+      noDataOptions.forEach((option) => {
+        option.classList.remove("selectedOption");
+      });
+    } else if (option.getAttribute("value") == "Yes") {
+      valid.isGoingToCollege = true;
+      valid.isGoingOut = false;
+      valid.isGoingHome = false;
+      valid.isGoingMarket = false;
+      valid.goingTo = "College";
+      datePicker.classList.add("hide");
+    } else if (option.getAttribute("value") == "No") {
+      valid.isGoingToCollege = true;
+      valid.isGoingOut = false;
+      valid.isGoingHome = false;
+      valid.isGoingMarket = false;
+      valid.goingTo = "College";
+      datePicker.classList.add("hide");
     }
     inputHandler();
   });
@@ -354,40 +449,58 @@ noDataOptions.forEach((option) => {
     noDataOptions.forEach((option) => {
       option.classList.remove("selectedOption");
     });
+    datePickerInput.value = "";
+    valid.expectedReturnDate = null;
+    valid.date = false;
+    checkStatus.setAttribute("disabled", true);
+
     option.classList.add("selectedOption");
     if (option.getAttribute("value") == "Home") {
       valid.isGoingOut = true;
       valid.isGoingToCollege = false;
       valid.isGoingHome = true;
       valid.isGoingMarket = false;
+      valid.goingTo = "Home";
+      datePicker.classList.remove("hide");
     } else if (option.getAttribute("value") == "Market") {
       valid.isGoingOut = true;
       valid.isGoingToCollege = false;
       valid.isGoingMarket = true;
       valid.isGoingHome = false;
+      valid.expectedReturnDate = null;
+      valid.goingTo = "Market";
+      datePicker.classList.add("hide");
     }
     inputHandler();
   });
 });
 function inputHandler() {
   if (valid.input) {
-    console.log("validInput");
+    console.log("Valid Roll Number");
     if (valid.isGoingOut) {
-      console.log("validGoingOut");
-      if (valid.date) {
-        console.log("validDate");
+      console.log("Student is going out");
+      checkStatus.setAttribute("disabled", true);
+      if (valid.isGoingHome) {
+        console.log("Student is going home");
+        if (valid.date) {
+          console.log("Valid Date");
+          checkStatus.removeAttribute("disabled");
+        } else {
+          console.log("Invalid Date");
+          checkStatus.setAttribute("disabled", true);
+        }
+      }
+      if (valid.isGoingMarket) {
+        console.log("Student is going market");
         checkStatus.removeAttribute("disabled");
-      } else {
-        console.log("invalidDate");
-        checkStatus.setAttribute("disabled", true);
       }
     }
     if (valid.isGoingToCollege) {
-      console.log("validGoingToCollege");
+      console.log("Student is going to college");
       checkStatus.removeAttribute("disabled");
     }
   } else {
-    console.log("invalidInput");
+    console.log("Invalid Roll Number");
     checkStatus.setAttribute("disabled", true);
   }
 }
@@ -396,4 +509,67 @@ function inputHandler() {
 // ----------------------------------------------------
 // ----------------------------------------------------
 
-checkStatus.addEventListener("click", () => {});
+checkStatus.addEventListener("click", () => {
+  confirmationBox.classList.add("showOverlay");
+  finalData.rollNo = rollInput.value;
+  finalData.goingTo = valid.goingTo;
+  // date picker or today
+  finalData.returnBy =
+    valid.goingTo === "College" ? "Invalid" : valid.expectedReturnDate;
+
+  if (valid.goingTo === "College") {
+    confirmBoxSub.innerText = `Are you sure you want to allow ${finalData.rollNo} to enter the college?`;
+  }
+  if (valid.goingTo === "Home") {
+    confirmBoxSub.innerText = `${
+      finalData.rollNo
+    } would be returning on ${todayTomorrowDate(
+      finalData.returnBy
+    )}. Are you sure you want to allow ${finalData.rollNo} to go to home?`;
+  }
+  if (valid.goingTo === "Market") {
+    confirmBoxSub.innerText = `Are you sure you want to allow ${finalData.rollNo} to go to market?`;
+  }
+  confirmBoxFinalData.forEach((item, i) => {
+    item.innerText = finalData[Object.keys(finalData)[i]];
+  });
+
+  question.classList.add("hide");
+  mainQuestionBox.classList.add("hide");
+  noDataBox.classList.add("hide");
+  datePicker.classList.add("hide");
+  rollInput.classList.remove("validRoll");
+  checkStatus.setAttribute("disabled", true);
+  options.forEach((option) => {
+    option.classList.remove("selectedOption");
+  });
+  noDataOptions.forEach((option) => {
+    option.classList.remove("selectedOption");
+  });
+});
+cancelButton.addEventListener("click", () => {
+  console.log("cancel");
+  confirmationBox.classList.remove("showOverlay");
+  finalData.rollNo = null;
+  finalData.goingTo = null;
+  finalData.returnBy = null;
+
+  confirmBoxFinalData.forEach((item, i) => {
+    item.innerText = finalData[Object.keys(finalData)[i]];
+  });
+
+  valid.isGoingOut = false;
+  valid.isGoingInCollege = false;
+  valid.isGoingHome = false;
+  valid.isGoingMarket = false;
+  valid.date = false;
+  valid.expectedReturnDate = null;
+  valid.rollNo = null;
+  valid.goingTo = null;
+  valid.showQuestion = false;
+  valid.input = false;
+
+  rollInput.value = "";
+});
+
+// ----------------------------------------------------
