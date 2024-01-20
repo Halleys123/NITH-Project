@@ -29,6 +29,9 @@ const inOutPopulate = asyncErrorHandler(async (req, res, next) => {
     }
   } else {
     isNew = false;
+    if (!foundStudent.isAllowed) {
+      throw new CustomError("thisStudentIsNotAllowed", 400);
+    }
     status = foundStudent.isOut;
   }
   if (reason == "market" && status == false) {
