@@ -124,11 +124,11 @@ pageMove[1].addEventListener("click", (e) => {
   changeSelected();
 });
 
-document.querySelector(".pagination").appendChild(
-  new Confirmation(
-    "Question",
-    "Are you sure to do this",
-    () => {},
-    () => {}
-  ).getDialogBox()
-);
+// document.querySelector(".pagination").appendChild(
+//   new Confirmation(
+//     "Question",
+//     "Are you sure to do this",
+//     () => {},
+//     () => {}
+//   ).getDialogBox()
+// );

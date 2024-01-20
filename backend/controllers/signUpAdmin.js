@@ -9,6 +9,7 @@ const {
 } = require("../utils/validators/validators");
 const hashPassword = require("../utils/security/passwords/hashPasswors");
 const signUp = asyncErrorHandler(async (req, res, next) => {
+
   const { username, password, email, role, gateNo } = req.body;
   let gate = gateNo;
   if (!(username && password && email && role)) {
